@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - DNA2Diet{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="bi bi-person-circle"></i> My Profile
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="bi bi-info-circle"></i> Demographic & Health Information</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('profile') }}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="age" class="form-label">
+                                    <i class="bi bi-calendar"></i> Age
+                                </label>
+                                <input type="number" class="form-control" id="age" name="age" 
+                                       value="{{ profile.age if profile else '' }}" min="1" max="120">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="gender" class="form-label">
+                                    <i class="bi bi-gender-ambiguous"></i> Gender
+                                </label>
+                                <select class="form-select" id="gender" name="gender">
+                                    <option value="">Select...</option>
+                                    <option value="male" {% if profile and profile.gender == 'male' %}selected{% endif %}>Male</option>
+                                    <option value="female" {% if profile and profile.gender == 'female' %}selected{% endif %}>Female</option>
+                                    <option value="other" {% if profile and profile.gender == 'other' %}selected{% endif %}>Other</option>
+                                    <option value="prefer_not_to_say" {% if profile and profile.gender == 'prefer_not_to_say' %}selected{% endif %}>Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="height" class="form-label">
+                                    <i class="bi bi-rulers"></i> Height (cm)
+                                </label>
+                                <input type="number" class="form-control" id="height" name="height" 
+                                       value="{{ profile.height if profile else '' }}" min="50" max="250" step="0.1">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="weight" class="form-label">
+                                    <i class="bi bi-activity"></i> Weight (kg)
+                                </label>
+                                <input type="number" class="form-control" id="weight" name="weight" 
+                                       value="{{ profile.weight if profile else '' }}" min="1" max="300" step="0.1">
+                                {% if profile and profile.bmi %}
+                                <small class="form-text text-muted">
+                                    BMI: {{ profile.bmi }} 
+                                    {% if profile.bmi < 18.5 %}
+                                        (Underweight)
+                                    {% elif profile.bmi < 25 %}
+                                        (Normal)
+                                    {% elif profile.bmi < 30 %}
+                                        (Overweight)
+                                    {% else %}
+                                        (Obese)
+                                    {% endif %}
+                                </small>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="blood_type" class="form-label">
+                                    <i class="bi bi-droplet"></i> Blood Type
+                                </label>
+                                <select class="form-select" id="blood_type" name="blood_type">
+                                    <option value="">Select...</option>
+                                    <option value="A+" {% if profile and profile.blood_type == 'A+' %}selected{% endif %}>A+</option>
+                                    <option value="A-" {% if profile and profile.blood_type == 'A-' %}selected{% endif %}>A-</option>
+                                    <option value="B+" {% if profile and profile.blood_type == 'B+' %}selected{% endif %}>B+</option>
+                                    <option value="B-" {% if profile and profile.blood_type == 'B-' %}selected{% endif %}>B-</option>
+                                    <option value="AB+" {% if profile and profile.blood_type == 'AB+' %}selected{% endif %}>AB+</option>
+                                    <option value="AB-" {% if profile and profile.blood_type == 'AB-' %}selected{% endif %}>AB-</option>
+                                    <option value="O+" {% if profile and profile.blood_type == 'O+' %}selected{% endif %}>O+</option>
+                                    <option value="O-" {% if profile and profile.blood_type == 'O-' %}selected{% endif %}>O-</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="activity_level" class="form-label">
+                                    <i class="bi bi-person-walking"></i> Activity Level
+                                </label>
+                                <select class="form-select" id="activity_level" name="activity_level">
+                                    <option value="">Select...</option>
+                                    <option value="sedentary" {% if profile and profile.activity_level == 'sedentary' %}selected{% endif %}>Sedentary</option>
+                                    <option value="lightly_active" {% if profile and profile.activity_level == 'lightly_active' %}selected{% endif %}>Lightly Active</option>
+                                    <option value="moderately_active" {% if profile and profile.activity_level == 'moderately_active' %}selected{% endif %}>Moderately Active</option>
+                                    <option value="very_active" {% if profile and profile.activity_level == 'very_active' %}selected{% endif %}>Very Active</option>
+                                    <option value="extremely_active" {% if profile and profile.activity_level == 'extremely_active' %}selected{% endif %}>Extremely Active</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="medical_history" class="form-label">
+                                <i class="bi bi-clipboard-pulse"></i> Medical History
+                            </label>
+                            <textarea class="form-control" id="medical_history" name="medical_history" rows="3" 
+                                      placeholder="List any chronic conditions, past surgeries, or significant medical events">{{ profile.medical_history if profile else '' }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="allergies" class="form-label">
+                                <i class="bi bi-exclamation-triangle"></i> Allergies
+                            </label>
+                            <textarea class="form-control" id="allergies" name="allergies" rows="2" 
+                                      placeholder="List any food or medication allergies">{{ profile.allergies if profile else '' }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="medications" class="form-label">
+                                <i class="bi bi-capsule"></i> Current Medications
+                            </label>
+                            <textarea class="form-control" id="medications" name="medications" rows="2" 
+                                      placeholder="List current medications and supplements">{{ profile.medications if profile else '' }}</textarea>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-save"></i> Save Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="bi bi-shield-check"></i> Privacy & Security</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">
+                        <small>
+                            Your health information is stored securely and is only used to provide personalized recommendations. 
+                            We comply with healthcare data privacy regulations.
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

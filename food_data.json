@@ -1,0 +1,329 @@
+{
+    "foods": [
+        {
+            "_id": "67806c4ef463d4b33408aa98",
+            "Common Names": "american licorice; wild licorice",
+            "FooDB Group": "",
+            "FooDB Subgroup": "",
+            "Food ID": "Plant ID:47080",
+            "Food-category": "Miscellaneous",
+            "Food-name": "American licorice",
+            "Scientific Name": "Glycyrrhiza lepidota",
+            "TAX ID": "47080.0"
+        },
+        {
+            "_id": "67806c4df463d4b33408a06c",
+            "Common Names": "canadian wild rice",
+            "FooDB Group": "Cereals and cereal products",
+            "FooDB Subgroup": "Cereals",
+            "Food ID": "Plant ID:75727",
+            "Food-category": "Miscellaneous",
+            "Food-name": "Canadian wild rice",
+            "Scientific Name": "Zizania aquatica",
+            "TAX ID": "75727.0"
+        },
+        {
+            "_id": "67806c4df463d4b33408a6fb",
+            "Common Names": "common wild rice; red rice",
+            "FooDB Group": "Cereals and cereal products",
+            "FooDB Subgroup": "Cereals",
+            "Food ID": "Plant ID:4529",
+            "Food-category": "Miscellaneous",
+            "Food-name": "Common wild rice",
+            "Scientific Name": "Oryza rufipogon",
+            "TAX ID": "4529.0"
+        },
+        {
+            "_id": "67806c4ef463d4b33408a8f4",
+            "Common Names": "hedgehog licorice",
+            "FooDB Group": "",
+            "FooDB Subgroup": "",
+            "Food ID": "Plant ID:46348",
+            "Food-category": "Miscellaneous",
+            "Food-name": "Hedgehog licorice",
+            "Scientific Name": "Glycyrrhiza echinata",
+            "TAX ID": "46348.0"
+        },
+        {
+            "_id": "67806c4df463d4b33408a6fc",
+            "Common Names": "indian rice; indica rice; japanese rice; red rice; japonica rice; long grained rice; rice",
+            "FooDB Group": "Cereals and cereal products",
+            "FooDB Subgroup": "Cereals",
+            "Food ID": "Plant ID:4530",
+            "Food-category": "Cereal",
+            "Food-name": "Indian rice",
+            "Scientific Name": "Oryza sativa",
+            "TAX ID": "4530.0"
+        },
+        {
+            "_id": "67806c4ef463d4b33408b60a",
+            "Common Names": "indian rice seed; indica rice seed; japanese rice seed; red rice seed; japonica rice seed; long grained rice seed; rice seed",
+            "FooDB Group": "",
+            "FooDB Subgroup": "",
+            "Food ID": "PlantDer ID: 12",
+            "Food-category": "Plant Derivative",
+            "Food-name": "Indian rice seed",
+            "Scientific Name": "Oryza sativa",
+            "TAX ID": "4530.0"
+        },
+        {
+            "_id": "67806c4ef463d4b33408a978",
+            "Common Names": "licorice polypody; licorice fern",
+            "FooDB Group": "",
+            "FooDB Subgroup": "",
+            "Food ID": "Plant ID:38390",
+            "Food-category": "Miscellaneous",
+            "Food-name": "Licorice polypody",
+            "Scientific Name": "Polypodium glycyrrhiza",
+            "TAX ID": "38390.0"
+        },
+        {
+            "_id": "67806c4df463d4b33408a04e",
+            "Common Names": "liquorice milk vetch",
+            "FooDB Group": "",
+            "FooDB Subgroup": "",
+            "Food ID": "Plant ID:83862",
+            "Food-category": "Miscellaneous",
+            "Food-name": "Liquorice milk vetch",
+            "Scientific Name": "Astragalus glycyphyllos",
+            "TAX ID": "83862.0"
+        },
+        {
+            "_id": "67806c4df463d4b334089c2e",
+            "Common Names": "liquorice root",
+            "FooDB Group": "Vegetables",
+            "FooDB Subgroup": "Root vegetables",
+            "Food ID": "Plant ID:57576",
+            "Food-category": "Herbs and Spices",
+            "Food-name": "Liquorice root",
+            "Scientific Name": "Hedysarum alpinum",
+            "TAX ID": "57576.0"
+        },
+        {
+            "_id": "67806c4ef463d4b33408a7d3",
+            "Common Names": "mountain rice",
+            "FooDB Group": "",
+            "FooDB Subgroup": "",
+            "Food ID": "Plant ID:37671",
+            "Food-category": "Miscellaneous",
+            "Food-name": "Mountain rice",
+            "Scientific Name": "Stipa hymenoides",
+            "TAX ID": "37671.0"
+        },
+        {
+            "_id": "67806c4df463d4b334089dfa",
+            "Common Names": "",
+            "FooDB Group": "",
+            "FooDB Subgroup": "",
+            "Food ID": "Plant ID:74631",
+            "Food-category": "Miscellaneous",
+            "Food-name": "Rosa sericea",
+            "Scientific Name": "Rosa sericea",
+            "TAX ID": "74631.0"
+        },
+        {
+            "_id": "67806c4ef463d4b33408a78b",
+            "Common Names": "sericea lespedeza; chinese bush clover; perennial lespedeza",
+            "FooDB Group": "",
+            "FooDB Subgroup": "",
+            "Food ID": "Plant ID:53893",
+            "Food-category": "Vegetable",
+            "Food-name": "Sericea lespedeza",
+            "Scientific Name": "Lespedeza cuneata",
+            "TAX ID": "53893.0"
+        }
+    ],
+    "diseases": [
+        {
+            "_id": "67842b02c3da1c6492bd319a",
+            "association": "Positive",
+            "disease-id": "MESH:D009369",
+            "disease-term": "Oryza rufipogon",
+            "food-id": "Plant ID:4529",
+            "food-term": "Oryza rufipogon",
+            "food-type": "Plant",
+            "pmid": "22268451",
+            "sentence": "Geographical subdivision between tropical and subtropical |Oryza rufipogon| was found for all of the photoperiod genes in plants divided by the Tropic of |Cancer| ."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc6920",
+            "association": "Negative",
+            "disease-id": "MESH:D009140",
+            "disease-term": "musculoskeletal disorders",
+            "food-id": "Plant ID:4530",
+            "food-term": "rice",
+            "food-type": "Plant",
+            "pmid": "24284663",
+            "sentence": "BACKGROUND: A previous ergonomic screening of |rice| field preparation revealed farmer exposure to high risks of |musculoskeletal disorders| at the shoulders, hands, wrists and back."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc6962",
+            "association": "Positive",
+            "disease-id": "MESH:D009369",
+            "disease-term": "tumor",
+            "food-id": "Plant ID:4530",
+            "food-term": "rice",
+            "food-type": "Plant",
+            "pmid": "20019075",
+            "sentence": "Monacolin K, monascin, ankaflavin or other red mold |rice| metabolites had been reported to decrease inflammation and oxidative stress and exerted anti-|tumor| effects."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc6961",
+            "association": "Positive",
+            "disease-id": "MESH:D007249",
+            "disease-term": "inflammation",
+            "food-id": "Plant ID:4530",
+            "food-term": "rice",
+            "food-type": "Plant",
+            "pmid": "20019075",
+            "sentence": "Monacolin K, monascin, ankaflavin or other red mold |rice| metabolites had been reported to decrease |inflammation| and oxidative stress and exerted anti-tumor effects."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc69ac",
+            "association": "Positive",
+            "disease-id": "MESH:D015179",
+            "disease-term": "colon cancer",
+            "food-id": "Plant ID:4530",
+            "food-term": "rice",
+            "food-type": "Plant",
+            "pmid": "26269672",
+            "sentence": "CONCLUSIONS \"CONCLUSION\": Our results provide evidence that brewers' |rice| can suppress |colon cancer| via the regulation of Nrf2 expression and the inhibition of the Wnt/NF-kB signaling pathways."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc695f",
+            "association": "Positive",
+            "disease-id": "MESH:D009369",
+            "disease-term": "tumor",
+            "food-id": "Plant ID:4530",
+            "food-term": "rice",
+            "food-type": "Plant",
+            "pmid": "20019075",
+            "sentence": "Red mold |rice| is a traditional Chinese food, and several reports have demonstrated that red mold rice had an anti-|tumor| effect."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc6960",
+            "association": "Positive",
+            "disease-id": "MESH:D009369",
+            "disease-term": "tumor",
+            "food-id": "Plant ID:4530",
+            "food-term": "rice",
+            "food-type": "Plant",
+            "pmid": "20019075",
+            "sentence": "Red mold rice is a traditional Chinese food, and several reports have demonstrated that red mold |rice| had an anti-|tumor| effect."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc6a01",
+            "association": "Positive",
+            "disease-id": "MESH:D003110",
+            "disease-term": "colonic disease",
+            "food-id": "Plant ID:4530",
+            "food-term": "rice",
+            "food-type": "Plant",
+            "pmid": "3035151",
+            "sentence": "The results suggest that |rice| fiber produced an increase in fecal weight, which is assumed to be effective in preventing |colonic disease| in advanced countries and does not affect plasma lipid level."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc6c52",
+            "association": "Positive",
+            "disease-id": "MESH:D011471",
+            "disease-term": "prostatic cancer",
+            "food-id": "Plant ID:4530",
+            "food-term": "rice",
+            "food-type": "Plant",
+            "pmid": "23805530",
+            "sentence": "CONCLUSIONS \"CONCLUSION\": Black |rice| pericarp extract could inhibit proliferation, change the cell cycle distributions and induce apoptosis in human |prostatic cancer| cell PC-3."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc6bb1",
+            "association": "Positive",
+            "disease-id": "MESH:D050171",
+            "disease-term": "dyslipidemia",
+            "food-id": "Plant ID:4530",
+            "food-term": "rice",
+            "food-type": "Plant",
+            "pmid": "24897342",
+            "sentence": "CONCLUSIONS: The meta-analysis suggests that red yeast |rice| is an effective and relatively safe approach for |dyslipidemia|."
+        }
+    ],
+    "genes": [
+        {
+            "_id": "67806c70f463d4b33408f144",
+            "": "14939",
+            "disease-id": "MESH:D003110",
+            "gene-id": "59",
+            "source": "CTD_human"
+        },
+        {
+            "_id": "67806c70f463d4b33408f14c",
+            "": "14947",
+            "disease-id": "MESH:D003110",
+            "gene-id": "538",
+            "source": "CTD_human"
+        },
+        {
+            "_id": "67806c70f463d4b33408f155",
+            "": "14956",
+            "disease-id": "MESH:D003110",
+            "gene-id": "1026",
+            "source": "CTD_human"
+        },
+        {
+            "_id": "67806c70f463d4b33408f15e",
+            "": "14965",
+            "disease-id": "MESH:D003110",
+            "gene-id": "1806",
+            "source": "CTD_human"
+        },
+        {
+            "_id": "67806c70f463d4b33408f173",
+            "": "14986",
+            "disease-id": "MESH:D003110",
+            "gene-id": "3458",
+            "source": "CTD_human"
+        },
+        {
+            "_id": "67806c70f463d4b33408f17c",
+            "": "14995",
+            "disease-id": "MESH:D003110",
+            "gene-id": "3725",
+            "source": "CTD_human"
+        },
+        {
+            "_id": "67806c70f463d4b33408f17f",
+            "": "14998",
+            "disease-id": "MESH:D003110",
+            "gene-id": "3952",
+            "source": "CTD_human"
+        },
+        {
+            "_id": "67806c70f463d4b33408f149",
+            "": "14944",
+            "disease-id": "MESH:D003110",
+            "gene-id": "324",
+            "source": "HPO;CTD_human"
+        },
+        {
+            "_id": "67806c70f463d4b33408f156",
+            "": "14957",
+            "disease-id": "MESH:D003110",
+            "gene-id": "1158",
+            "source": "CTD_human"
+        },
+        {
+            "_id": "67806c70f463d4b33408f15a",
+            "": "14961",
+            "disease-id": "MESH:D003110",
+            "gene-id": "1592",
+            "source": "CTD_human"
+        }
+    ],
+    "pagination": {
+        "totalDiseases": 221,
+        "totalDiseasePages": 23,
+        "totalGenes": 1025,
+        "totalPages": 103,
+        "currentPage": 1,
+        "limit": 10
+    },
+    "responseTime": "238ms"
+}

@@ -1,0 +1,1147 @@
+{
+  "blood protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "gout": {
+    "World": {
+      "2021": 0.0066
+    }
+  },
+  "hypertension": {
+    "World": {
+      "2021": 0.32
+    }
+  },
+  "diabetes mellitus": {
+    "World": {
+      "2021": 0.1
+    }
+  },
+  "overnutrition": {
+    "World": {
+      "2021": null
+    }
+  },
+  "obesity": {
+    "World": {
+      "2021": 0.16
+    }
+  },
+  "aspartate aminotransferase": {
+    "World": {
+      "2021": null
+    }
+  },
+  "metabolic syndrome": {
+    "World": {
+      "2021": null
+    }
+  },
+  "level": {
+    "World": {
+      "2021": null
+    }
+  },
+  "omega-6": {
+    "World": {
+      "2021": null
+    }
+  },
+  "inflammatory": {
+    "World": {
+      "2021": null
+    }
+  },
+  "essential hypertension": {
+    "World": {
+      "2021": 0.32
+    }
+  },
+  "Calcium channel blocker": {
+    "World": {
+      "2021": null
+    }
+  },
+  "alcohol drinking": {
+    "World": {
+      "2021": null
+    }
+  },
+  "omega-3": {
+    "World": {
+      "2021": null
+    }
+  },
+  "vitamin D deficiency": {
+    "World": {
+      "2021": null
+    }
+  },
+  "vitamin D": {
+    "World": {
+      "2021": null
+    }
+  },
+  "glucose tolerance test": {
+    "World": {
+      "2021": null
+    }
+  },
+  "body mass index": {
+    "World": {
+      "2021": null
+    }
+  },
+  "measurement": {
+    "World": {
+      "2021": null
+    }
+  },
+  "esterified": {
+    "World": {
+      "2021": null
+    }
+  },
+  "blood glucose": {
+    "World": {
+      "2021": null
+    }
+  },
+  "insulin": {
+    "World": {
+      "2021": null
+    }
+  },
+  "non-alcoholic fatty liver disease": {
+    "World": {
+      "2021": null
+    }
+  },
+  "insomnia": {
+    "World": {
+      "2021": null
+    }
+  },
+  "obsessive-compulsive disorder": {
+    "World": {
+      "2021": null
+    }
+  },
+  "forced": {
+    "World": {
+      "2021": null
+    }
+  },
+  "fatty acid": {
+    "World": {
+      "2021": null
+    }
+  },
+  "schizophrenia": {
+    "World": {
+      "2021": 0.004
+    }
+  },
+  "attention": {
+    "World": {
+      "2021": 0.05
+    }
+  },
+  "adhesion": {
+    "World": {
+      "2021": null
+    }
+  },
+  "migraine disorder": {
+    "World": {
+      "2021": 0.07
+    }
+  },
+  "age": {
+    "World": {
+      "2021": null
+    }
+  },
+  "trait": {
+    "World": {
+      "2021": null
+    }
+  },
+  "response": {
+    "World": {
+      "2021": null
+    }
+  },
+  "remnant": {
+    "World": {
+      "2021": null
+    }
+  },
+  "phospholipids": {
+    "World": {
+      "2021": null
+    }
+  },
+  "lipids": {
+    "World": {
+      "2021": null
+    }
+  },
+  "cholesterol": {
+    "World": {
+      "2021": 0.15
+    }
+  },
+  "triglycerides": {
+    "World": {
+      "2021": null
+    }
+  },
+  "apolipoprotein B": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Hypercholesterolemia": {
+    "World": {
+      "2021": 0.15
+    }
+  },
+  "social deprivation": {
+    "World": {
+      "2021": null
+    }
+  },
+  "familial": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Hyperlipidemia, Familial Combined": {
+    "World": {
+      "2021": null
+    }
+  },
+  "chylomicron": {
+    "World": {
+      "2021": null
+    }
+  },
+  "cholesterol esters": {
+    "World": {
+      "2021": null
+    }
+  },
+  "triglyceride": {
+    "World": {
+      "2021": null
+    }
+  },
+  "insulin-like peptide": {
+    "World": {
+      "2021": null
+    }
+  },
+  "vitamin D-binding protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "environmental exposure": {
+    "World": {
+      "2021": null
+    }
+  },
+  "blood": {
+    "World": {
+      "2021": null
+    }
+  },
+  "sodium diet": {
+    "World": {
+      "2021": null
+    }
+  },
+  "sleep duration": {
+    "World": {
+      "2021": null
+    }
+  },
+  "complement": {
+    "World": {
+      "2021": null
+    }
+  },
+  "circulating": {
+    "World": {
+      "2021": null
+    }
+  },
+  "programmed": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Drugs": {
+    "World": {
+      "2021": null
+    }
+  },
+  "latent": {
+    "World": {
+      "2021": null
+    }
+  },
+  "extracellular matrix protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "iron": {
+    "World": {
+      "2021": null
+    }
+  },
+  "WAP four-disulfide core domain protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "metalloproteinase": {
+    "World": {
+      "2021": null
+    }
+  },
+  "protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "calcium/calmodulin-dependent protein kinase": {
+    "World": {
+      "2021": null
+    }
+  },
+  "iron binding": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Iron deficiency": {
+    "World": {
+      "2021": null
+    }
+  },
+  "MAP": {
+    "World": {
+      "2021": null
+    }
+  },
+  "glycoprotein hormones": {
+    "World": {
+      "2021": null
+    }
+  },
+  "secretory": {
+    "World": {
+      "2021": null
+    }
+  },
+  "glucose-6-phosphate": {
+    "World": {
+      "2021": null
+    }
+  },
+  "synaptic vesicle": {
+    "World": {
+      "2021": null
+    }
+  },
+  "cartilage": {
+    "World": {
+      "2021": null
+    }
+  },
+  "mitogen-activated protein kinase": {
+    "World": {
+      "2021": null
+    }
+  },
+  "matrix": {
+    "World": {
+      "2021": null
+    }
+  },
+  "zinc fingers": {
+    "World": {
+      "2021": null
+    }
+  },
+  "homeobox protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "fibroblast growth factor": {
+    "World": {
+      "2021": null
+    }
+  },
+  "phosphoribosyl": {
+    "World": {
+      "2021": null
+    }
+  },
+  "inhibitor": {
+    "World": {
+      "2021": null
+    }
+  },
+  "nuclear protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "prostate": {
+    "World": {
+      "2021": null
+    }
+  },
+  "GTPase-activating protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "eosinophil": {
+    "World": {
+      "2021": null
+    }
+  },
+  "cysteine": {
+    "World": {
+      "2021": null
+    }
+  },
+  "chitinase-3-like protein 1": {
+    "World": {
+      "2021": null
+    }
+  },
+  "cystic fibrosis": {
+    "World": {
+      "2021": null
+    }
+  },
+  "branched-chain": {
+    "World": {
+      "2021": null
+    }
+  },
+  "obsessive-compulsive": {
+    "World": {
+      "2021": null
+    }
+  },
+  "psoriasis": {
+    "World": {
+      "2021": null
+    }
+  },
+  "magnesium": {
+    "World": {
+      "2021": null
+    }
+  },
+  "nicotine": {
+    "World": {
+      "2021": null
+    }
+  },
+  "low": {
+    "World": {
+      "2021": null
+    }
+  },
+  "disintegrin": {
+    "World": {
+      "2021": null
+    }
+  },
+  "alpha-fetoprotein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "glucose metabolism": {
+    "World": {
+      "2021": null
+    }
+  },
+  "docosahexaenoic acid": {
+    "World": {
+      "2021": null
+    }
+  },
+  "COVID-19": {
+    "World": {
+      "2021": null
+    }
+  },
+  "group": {
+    "World": {
+      "2021": null
+    }
+  },
+  "signal peptide": {
+    "World": {
+      "2021": null
+    }
+  },
+  "regulatory protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "insulin-like growth factor-binding protein 1": {
+    "World": {
+      "2021": null
+    }
+  },
+  "insulin-like growth factor-binding protein 2": {
+    "World": {
+      "2021": null
+    }
+  },
+  "retinoic acid receptor": {
+    "World": {
+      "2021": null
+    }
+  },
+  "apolipoprotein M": {
+    "World": {
+      "2021": null
+    }
+  },
+  "leucine-rich repeat": {
+    "World": {
+      "2021": null
+    }
+  },
+  "alcohol-related disorders": {
+    "World": {
+      "2021": null
+    }
+  },
+  "synaptosomal-associated protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "leptin": {
+    "World": {
+      "2021": null
+    }
+  },
+  "cysteine-rich": {
+    "World": {
+      "2021": null
+    }
+  },
+  "asthma": {
+    "World": {
+      "2021": null
+    }
+  },
+  "vesicle-associated membrane protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Cleft palate": {
+    "World": {
+      "2021": null
+    }
+  },
+  "cleft lip": {
+    "World": {
+      "2021": null
+    }
+  },
+  "interleukin-1 receptor antagonist protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "selenium": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Abnormal": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Secreted": {
+    "World": {
+      "2021": null
+    }
+  },
+  "cardiovascular disease": {
+    "World": {
+      "2021": null
+    }
+  },
+  "neural cell": {
+    "World": {
+      "2021": null
+    }
+  },
+  "wap": {
+    "World": {
+      "2021": null
+    }
+  },
+  "polycystic ovary syndrome": {
+    "World": {
+      "2021": null
+    }
+  },
+  "alcohol": {
+    "World": {
+      "2021": 0.25
+    }
+  },
+  "fibroblast growth factor 2": {
+    "World": {
+      "2021": null
+    }
+  },
+  "fructose": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Proteinuria": {
+    "World": {
+      "2021": null
+    }
+  },
+  "fetal": {
+    "World": {
+      "2021": null
+    }
+  },
+  "erythrocyte": {
+    "World": {
+      "2021": null
+    }
+  },
+  "zinc finger protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "janus kinase": {
+    "World": {
+      "2021": null
+    }
+  },
+  "mast": {
+    "World": {
+      "2021": null
+    }
+  },
+  "x-ray repair cross-complementing protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "platelet glycoprotein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "BRCA1": {
+    "World": {
+      "2021": null
+    }
+  },
+  "ADP-ribosylation factor": {
+    "World": {
+      "2021": null
+    }
+  },
+  "histidine": {
+    "World": {
+      "2021": null
+    }
+  },
+  "mobility group protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "calcium-binding": {
+    "World": {
+      "2021": null
+    }
+  },
+  "serine/threonine-protein kinase": {
+    "World": {
+      "2021": null
+    }
+  },
+  "RNA-binding protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "ELAV-like protein 1": {
+    "World": {
+      "2021": null
+    }
+  },
+  "protein kinase c": {
+    "World": {
+      "2021": null
+    }
+  },
+  "phosphatidylinositol": {
+    "World": {
+      "2021": null
+    }
+  },
+  "tyrosine-protein kinase": {
+    "World": {
+      "2021": null
+    }
+  },
+  "transforming protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "ADP-ribosylation": {
+    "World": {
+      "2021": null
+    }
+  },
+  "structural": {
+    "World": {
+      "2021": null
+    }
+  },
+  "activator": {
+    "World": {
+      "2021": null
+    }
+  },
+  "heterogeneous": {
+    "World": {
+      "2021": null
+    }
+  },
+  "gamma-aminobutyric acid": {
+    "World": {
+      "2021": null
+    }
+  },
+  "protein arginine": {
+    "World": {
+      "2021": null
+    }
+  },
+  "fragile X": {
+    "World": {
+      "2021": null
+    }
+  },
+  "p53": {
+    "World": {
+      "2021": null
+    }
+  },
+  "bone morphogenetic protein 7": {
+    "World": {
+      "2021": null
+    }
+  },
+  "receptor-interacting": {
+    "World": {
+      "2021": null
+    }
+  },
+  "regulator": {
+    "World": {
+      "2021": null
+    }
+  },
+  "lymphocyte": {
+    "World": {
+      "2021": null
+    }
+  },
+  "dual specificity": {
+    "World": {
+      "2021": null
+    }
+  },
+  "mitogen-activated protein kinase 1": {
+    "World": {
+      "2021": null
+    }
+  },
+  "mitogen-activated protein kinase 8": {
+    "World": {
+      "2021": null
+    }
+  },
+  "alpha-2-macroglobulin": {
+    "World": {
+      "2021": null
+    }
+  },
+  "proline-rich protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "bone morphogenetic protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "soluble": {
+    "World": {
+      "2021": null
+    }
+  },
+  "pulmonary surfactant-associated protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "migraine": {
+    "World": {
+      "2021": 0.07
+    }
+  },
+  "serum": {
+    "World": {
+      "2021": null
+    }
+  },
+  "discoidin": {
+    "World": {
+      "2021": null
+    }
+  },
+  "chromosomal protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "leucine-rich": {
+    "World": {
+      "2021": null
+    }
+  },
+  "metabolically": {
+    "World": {
+      "2021": null
+    }
+  },
+  "interleukin-1 receptor": {
+    "World": {
+      "2021": null
+    }
+  },
+  "insulin-like growth factor-binding protein 3": {
+    "World": {
+      "2021": null
+    }
+  },
+  "coffee": {
+    "World": {
+      "2021": null
+    }
+  },
+  "SLIT": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Headache": {
+    "World": {
+      "2021": null
+    }
+  },
+  "advanced glycation": {
+    "World": {
+      "2021": null
+    }
+  },
+  "transforming growth": {
+    "World": {
+      "2021": null
+    }
+  },
+  "mitogen-activated protein kinase 9": {
+    "World": {
+      "2021": null
+    }
+  },
+  "chronic obstructive pulmonary disease": {
+    "World": {
+      "2021": null
+    }
+  },
+  "complement C1q": {
+    "World": {
+      "2021": null
+    }
+  },
+  "brevican": {
+    "World": {
+      "2021": null
+    }
+  },
+  "DNA-binding protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "PH": {
+    "World": {
+      "2021": 0.004
+    }
+  },
+  "CCAAT/enhancer-binding protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "PR": {
+    "World": {
+      "2021": null
+    }
+  },
+  "insulin resistance": {
+    "World": {
+      "2021": null
+    }
+  },
+  "body fat": {
+    "World": {
+      "2021": null
+    }
+  },
+  "anterior": {
+    "World": {
+      "2021": null
+    }
+  },
+  "uridine": {
+    "World": {
+      "2021": null
+    }
+  },
+  "calcium channel blocker": {
+    "World": {
+      "2021": null
+    }
+  },
+  "secreted": {
+    "World": {
+      "2021": null
+    }
+  },
+  "stroke": {
+    "World": {
+      "2021": 0.02
+    }
+  },
+  "IgG": {
+    "World": {
+      "2021": null
+    }
+  },
+  "noncompact": {
+    "World": {
+      "2021": null
+    }
+  },
+  "immunoglobulin": {
+    "World": {
+      "2021": null
+    }
+  },
+  "inositol": {
+    "World": {
+      "2021": null
+    }
+  },
+  "vitamin B deficiency": {
+    "World": {
+      "2021": null
+    }
+  },
+  "vitamin A": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Abnormality": {
+    "World": {
+      "2021": null
+    }
+  },
+  "waist-hip ratio": {
+    "World": {
+      "2021": null
+    }
+  },
+  "disease free": {
+    "World": {
+      "2021": null
+    }
+  },
+  "serum albumin": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Alzheimer disease": {
+    "World": {
+      "2021": null
+    }
+  },
+  "acute": {
+    "World": {
+      "2021": null
+    }
+  },
+  "matrix metalloproteinase": {
+    "World": {
+      "2021": null
+    }
+  },
+  "proprotein convertase": {
+    "World": {
+      "2021": null
+    }
+  },
+  "vitamin E": {
+    "World": {
+      "2021": null
+    }
+  },
+  "nucleosome assembly protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "Rare": {
+    "World": {
+      "2021": null
+    }
+  },
+  "heart failure": {
+    "World": {
+      "2021": null
+    }
+  },
+  "antiphospholipid syndrome": {
+    "World": {
+      "2021": null
+    }
+  },
+  "insulin-like growth factor-binding protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "lysosomal": {
+    "World": {
+      "2021": null
+    }
+  },
+  "free": {
+    "World": {
+      "2021": null
+    }
+  },
+  "childhood": {
+    "World": {
+      "2021": null
+    }
+  },
+  "glucagon": {
+    "World": {
+      "2021": null
+    }
+  },
+  "dietary": {
+    "World": {
+      "2021": null
+    }
+  },
+  "mitogen-activated protein kinase 3": {
+    "World": {
+      "2021": null
+    }
+  },
+  "lipid": {
+    "World": {
+      "2021": null
+    }
+  },
+  "chronic kidney disease": {
+    "World": {
+      "2021": 0.09
+    }
+  },
+  "marginal zone": {
+    "World": {
+      "2021": null
+    }
+  },
+  "pulmonary arterial hypertension": {
+    "World": {
+      "2021": 0.32
+    }
+  },
+  "WAP": {
+    "World": {
+      "2021": null
+    }
+  },
+  "adipocyte": {
+    "World": {
+      "2021": null
+    }
+  },
+  "bipolar disorder": {
+    "World": {
+      "2021": null
+    }
+  },
+  "epididymal": {
+    "World": {
+      "2021": null
+    }
+  },
+  "parathyroid hormone-related protein": {
+    "World": {
+      "2021": null
+    }
+  },
+  "glycoprotein": {
+    "World": {
+      "2021": null
+    }
+  }
+}

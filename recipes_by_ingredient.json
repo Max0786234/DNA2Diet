@@ -1,0 +1,92 @@
+[
+  {
+    "ingredient": "rhubarb",
+    "count": 0,
+    "file": "./ingredient_recipes\\rhubarb.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "gastrodia elata",
+    "count": 0,
+    "file": "./ingredient_recipes\\gastrodia_elata.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "ginkgo biloba",
+    "count": 0,
+    "file": "./ingredient_recipes\\ginkgo_biloba.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "aralia cordata",
+    "count": 0,
+    "file": "./ingredient_recipes\\aralia_cordata.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "scutellaria baicalensis",
+    "count": 0,
+    "file": "./ingredient_recipes\\scutellaria_baicalensis.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "cocoa",
+    "count": 0,
+    "file": "./ingredient_recipes\\cocoa.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "celery",
+    "count": 0,
+    "file": "./ingredient_recipes\\celery.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "coffee",
+    "count": 0,
+    "file": "./ingredient_recipes\\coffee.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "ginseng",
+    "count": 0,
+    "file": "./ingredient_recipes\\ginseng.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "peppermint",
+    "count": 0,
+    "file": "./ingredient_recipes\\peppermint.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "verbascum thapsus l.",
+    "count": 0,
+    "file": "./ingredient_recipes\\verbascum_thapsus_l_.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "tanacetum parthenium",
+    "count": 0,
+    "file": "./ingredient_recipes\\tanacetum_parthenium.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "pork",
+    "count": 0,
+    "file": "./ingredient_recipes\\pork.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "cheese",
+    "count": 0,
+    "file": "./ingredient_recipes\\cheese.json",
+    "recipes_preview": []
+  },
+  {
+    "ingredient": "white wine",
+    "count": 0,
+    "file": "./ingredient_recipes\\white_wine.json",
+    "recipes_preview": []
+  }
+]

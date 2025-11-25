@@ -1,0 +1,13 @@
+{
+  "ingredient": "rhubarb",
+  "filtered_recipes": [],
+  "skipped_recipes": [
+    {
+      "reason": "no_search_response_or_no_items"
+    }
+  ],
+  "search_meta": {
+    "pagination": {}
+  },
+  "search_count": 0
+}

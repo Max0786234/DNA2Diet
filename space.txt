@@ -1,0 +1,36 @@
+# -----------------
+# 7. Fallback: ScispaCy + UMLS API for unmapped traits
+# -----------------
+
+# Load SciSpaCy model and add UMLS linker
+nlp = spacy.load("en_core_sci_sm")
+
+# Add the linker properly
+if "scispacy_linker" not in nlp.pipe_names:
+    nlp.add_pipe("scispacy_linker", config={"linker_name": "umls", "resolve_abbreviations": True})
+
+# Limit to top 100 traits for testing
+unmapped = mesh_map[mesh_map["MESH_ID"].isna()]["MAPPED_TRAIT"].dropna().unique()
+test_limit = 100  # set None for full run
+if test_limit:
+    unmapped = unmapped[:test_limit]
+
+print(f"⚠️ Traits without MeSH: {len(unmapped)} → falling back to SciSpaCy+UMLS")
+
+umls_results = []
+for trait in tqdm(unmapped, desc="UMLS Linking"):
+    doc = nlp(trait)
+    if doc.ents:
+        ent = doc.ents[0]
+        # Use getattr to safely avoid AttributeError
+        umls_ents = getattr(ent._, "umls_ents", [])
+        if umls_ents:
+            cui, score = umls_ents[0]
+            umls_results.append((trait, cui, ent.text))
+        else:
+            umls_results.append((trait, None, None))
+    else:
+        umls_results.append((trait, None, None))
+
+umls_map = pd.DataFrame(umls_results, columns=["MAPPED_TRAIT", "UMLS_CUI", "UMLS_TERM"])
+print(f"✅ UMLS mapping done for {len(umls_map)} traits")

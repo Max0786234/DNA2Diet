@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+
+{% block title %}{{ recipe.recipe_title }} - DNA2Diet{% endblock %}
+
+{% block extra_css %}
+<style>
+    .recipe-image-container {
+        position: relative;
+        background-color: #f0f0f0;
+        overflow: hidden;
+    }
+    
+    #recipe-main-image {
+        transition: opacity 0.3s ease-in-out;
+        will-change: opacity;
+    }
+    
+    .image-loading-spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 mb-3">
+            <a href="javascript:history.back()" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Recipe Image and Basic Info -->
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-sm">
+                <div class="recipe-image-container" style="height: 400px; position: relative; background-color: #f0f0f0; overflow: hidden;">
+                    {% set placeholder_image = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'400\' height=\'400\'/%3E%3Ctext fill=\'%23999\' font-family=\'sans-serif\' font-size=\'24\' dy=\'10.5\' font-weight=\'bold\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\'%3ENo Image Available%3C/text%3E%3C/svg%3E' %}
+                    <img id="recipe-main-image" 
+                         src="{{ recipe.img_url or placeholder_image }}" 
+                         class="card-img-top" 
+                         alt="{{ recipe.recipe_title }}"
+                         style="height: 100%; width: 100%; object-fit: cover; transition: opacity 0.3s; opacity: 0;"
+                         loading="eager"
+                         onerror="handleDetailImageError(this);"
+                         onload="this.style.opacity='1'; document.getElementById('detail-image-spinner').style.display='none';">
+                    <div id="detail-image-spinner" class="image-loading-spinner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">{{ recipe.recipe_title }}</h2>
+                    
+                    <!-- Basic Info -->
+                    <div class="row mt-3 mb-3">
+                        <div class="col-6 text-center border-end">
+                            <i class="bi bi-people fs-4 text-primary"></i>
+                            <p class="mb-0"><strong>{{ recipe.servings or 'N/A' }}</strong></p>
+                            <small class="text-muted">Servings</small>
+                        </div>
+                        <div class="col-6 text-center">
+                            <i class="bi bi-fire fs-4 text-danger"></i>
+                            <p class="mb-0"><strong>{{ recipe.calories or 'N/A' }}</strong></p>
+                            <small class="text-muted">Calories</small>
+                        </div>
+                    </div>
+
+                    <!-- Time Info -->
+                    <div class="row mb-3">
+                        <div class="col-4 text-center border-end">
+                            <i class="bi bi-clock text-info"></i>
+                            <p class="mb-0"><strong>{{ recipe.prep_time_min or 'N/A' }}</strong></p>
+                            <small class="text-muted">Prep (min)</small>
+                        </div>
+                        <div class="col-4 text-center border-end">
+                            <i class="bi bi-hourglass-split text-warning"></i>
+                            <p class="mb-0"><strong>{{ recipe.cook_time_min or 'N/A' }}</strong></p>
+                            <small class="text-muted">Cook (min)</small>
+                        </div>
+                        <div class="col-4 text-center">
+                            <i class="bi bi-stopwatch text-success"></i>
+                            <p class="mb-0"><strong>{{ recipe.total_time_min or 'N/A' }}</strong></p>
+                            <small class="text-muted">Total (min)</small>
+                        </div>
+                    </div>
+
+                    <!-- Region Info -->
+                    {% if recipe.region or recipe.sub_region or recipe.continent %}
+                    <div class="mb-3">
+                        <small class="text-muted">
+                            <i class="bi bi-geo-alt"></i>
+                            {% if recipe.continent %}{{ recipe.continent }}{% endif %}
+                            {% if recipe.region %} → {{ recipe.region }}{% endif %}
+                            {% if recipe.sub_region %} → {{ recipe.sub_region }}{% endif %}
+                        </small>
+                    </div>
+                    {% endif %}
+
+                    <!-- Source Link -->
+                    {% if recipe.url %}
+                    <a href="{{ recipe.url }}" target="_blank" class="btn btn-primary w-100">
+                        <i class="bi bi-box-arrow-up-right"></i> View Original Recipe
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe Details -->
+        <div class="col-md-7">
+            <!-- Nutrition Information -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-clipboard-data"></i> Nutrition Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <strong>Energy:</strong> {{ recipe.energy_kcal or 'N/A' }} kcal
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Protein:</strong> {{ recipe.protein_g or 'N/A' }} g
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Carbohydrates:</strong> {{ recipe.carbohydrate_by_difference_g or 'N/A' }} g
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Total Fat:</strong> {{ recipe.total_lipid_fat_g or 'N/A' }} g
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingredients -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-list-ul"></i> Ingredients</h5>
+                </div>
+                <div class="card-body">
+                    {% if recipe.ingredient_phrases %}
+                    <ul class="list-group list-group-flush">
+                        {% for ingredient in recipe.ingredient_phrases %}
+                        <li class="list-group-item">{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="text-muted">No ingredients listed.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Dietary Information -->
+            {% if recipe.vegan or recipe.pescetarian or recipe.ovo_vegetarian or recipe.lacto_vegetarian or recipe.ovo_lacto_vegetarian %}
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="bi bi-shield-check"></i> Dietary Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% if recipe.vegan == '1.0' or recipe.vegan == '1' %}
+                        <div class="col-md-6 mb-2">
+                            <span class="badge bg-success">Vegan</span>
+                        </div>
+                        {% endif %}
+                        {% if recipe.pescetarian == '1.0' or recipe.pescetarian == '1' %}
+                        <div class="col-md-6 mb-2">
+                            <span class="badge bg-info">Pescetarian</span>
+                        </div>
+                        {% endif %}
+                        {% if recipe.ovo_vegetarian == '1.0' or recipe.ovo_vegetarian == '1' %}
+                        <div class="col-md-6 mb-2">
+                            <span class="badge bg-warning">Ovo-Vegetarian</span>
+                        </div>
+                        {% endif %}
+                        {% if recipe.lacto_vegetarian == '1.0' or recipe.lacto_vegetarian == '1' %}
+                        <div class="col-md-6 mb-2">
+                            <span class="badge bg-secondary">Lacto-Vegetarian</span>
+                        </div>
+                        {% endif %}
+                        {% if recipe.ovo_lacto_vegetarian == '1.0' or recipe.ovo_lacto_vegetarian == '1' %}
+                        <div class="col-md-6 mb-2">
+                            <span class="badge bg-primary">Ovo-Lacto Vegetarian</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Cooking Processes -->
+            {% if recipe.processes %}
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-gear"></i> Cooking Processes</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for process in recipe.processes.split('||') %}
+                        <span class="badge bg-secondary">{{ process }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Utensils -->
+            {% if recipe.utensils %}
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-tools"></i> Required Utensils</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for utensil in recipe.utensils.split('||') %}
+                        <span class="badge bg-dark">{{ utensil }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Image error handler for detail page
+function handleDetailImageError(img) {
+    if (img.dataset.errorHandled === 'true') {
+        return; // Already handled, prevent infinite loop
+    }
+    
+    img.dataset.errorHandled = 'true';
+    const placeholderImage = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'400\' height=\'400\'/%3E%3Ctext fill=\'%23999\' font-family=\'sans-serif\' font-size=\'24\' dy=\'10.5\' font-weight=\'bold\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\'%3ENo Image Available%3C/text%3E%3C/svg%3E';
+    
+    // Clear timeout if exists
+    if (img.dataset.loadTimeout) {
+        clearTimeout(img.dataset.loadTimeout);
+    }
+    
+    img.style.opacity = '0';
+    const spinner = document.getElementById('detail-image-spinner');
+    if (spinner) spinner.style.display = 'none';
+    
+    // Use placeholder after a short delay for smooth transition
+    setTimeout(() => {
+        img.src = placeholderImage;
+        img.style.opacity = '1';
+    }, 100);
+}
+
+// Initialize image loading state with timeout
+document.addEventListener('DOMContentLoaded', function() {
+    const img = document.getElementById('recipe-main-image');
+    if (!img) return;
+    
+    if (!img.complete && !img.dataset.errorHandled) {
+        const spinner = document.getElementById('detail-image-spinner');
+        if (spinner) spinner.style.display = 'block';
+        img.style.opacity = '0';
+        
+        // Set timeout for slow-loading images (5 seconds)
+        const placeholderImage = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'400\' height=\'400\'/%3E%3Ctext fill=\'%23999\' font-family=\'sans-serif\' font-size=\'24\' dy=\'10.5\' font-weight=\'bold\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\'%3ENo Image Available%3C/text%3E%3C/svg%3E';
+        img.dataset.loadTimeout = setTimeout(() => {
+            if (!img.complete && !img.dataset.errorHandled) {
+                handleDetailImageError(img);
+            }
+        }, 5000);
+    } else if (img.complete) {
+        img.style.opacity = '1';
+        const spinner = document.getElementById('detail-image-spinner');
+        if (spinner) spinner.style.display = 'none';
+    }
+    
+    // Clear timeout on successful load
+    img.addEventListener('load', function() {
+        if (this.dataset.loadTimeout) {
+            clearTimeout(this.dataset.loadTimeout);
+            delete this.dataset.loadTimeout;
+        }
+        this.style.opacity = '1';
+        const spinner = document.getElementById('detail-image-spinner');
+        if (spinner) spinner.style.display = 'none';
+    });
+});
+</script>
+{% endblock %}
+

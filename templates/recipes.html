@@ -1,0 +1,442 @@
+{% extends "base.html" %}
+
+{% block title %}Recipe Recommendations - DNA2Diet{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="bi bi-cup-hot"></i> Recipe Recommendations
+                <small class="text-muted">File: {{ analysis.genome_filename }}</small>
+            </h2>
+        </div>
+    </div>
+
+    {% if analysis.status != 'completed' %}
+    <div class="alert alert-warning">
+        <i class="bi bi-exclamation-triangle"></i> 
+        <strong>Analysis Not Complete</strong>
+        <p class="mb-0">Please wait for the analysis to complete before viewing recipes.</p>
+    </div>
+    <div class="mt-4">
+        <a href="{{ url_for('results', analysis_id=analysis.id) }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to Results
+        </a>
+    </div>
+    {% elif not ingredient_data or not ingredient_data.get('ingredient_recommendations') %}
+    <div class="alert alert-info">
+        <i class="bi bi-info-circle"></i> 
+        <strong>No Ingredient Recommendations</strong>
+        <p class="mb-0">No ingredient recommendations are available for this analysis.</p>
+    </div>
+    <div class="mt-4">
+        <a href="{{ url_for('results', analysis_id=analysis.id) }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to Results
+        </a>
+    </div>
+    {% else %}
+    
+    <!-- Positive Ingredients Summary -->
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h5><i class="bi bi-check-circle"></i> Recommended Ingredients ({{ ingredient_data.ingredient_recommendations|length }} total)</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% for ingredient, data in ingredient_data.ingredient_recommendations.items() %}
+                    {% if data.final_action == 'prefer' %}
+                    <div class="col-md-3 col-sm-4 col-6 mb-2">
+                        <span class="badge bg-success me-1">{{ ingredient }}</span>
+                        <small class="text-muted">({{ data.counts.get('prefer', 0) }} evidence)</small>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipes Container -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5><i class="bi bi-list-ul"></i> Recipes Matching Your Ingredients</h5>
+        </div>
+        <div class="card-body">
+            <!-- Loading indicator -->
+            <div id="loading-indicator" class="text-center py-5" style="display: none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2 text-muted">Loading more recipes...</p>
+            </div>
+
+            <!-- Error message -->
+            <div id="error-message" class="alert alert-danger" style="display: none;">
+                <i class="bi bi-exclamation-triangle"></i>
+                <span id="error-text"></span>
+            </div>
+
+            <!-- Recipes Grid -->
+            <div id="recipes-container" class="row">
+                <!-- Recipes will be loaded here via JavaScript -->
+            </div>
+
+            <!-- End of results message -->
+            <div id="end-message" class="text-center mt-4" style="display: none;">
+                <p class="text-muted">
+                    <i class="bi bi-check-circle"></i> 
+                    You've reached the end! All recipes have been loaded.
+                </p>
+            </div>
+
+            <!-- Empty state -->
+            <div id="empty-state" class="text-center py-5" style="display: none;">
+                <i class="bi bi-inbox" style="font-size: 3rem; color: #ccc;"></i>
+                <p class="text-muted mt-3">No recipes found matching your ingredient recommendations.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 mb-5">
+        <a href="{{ url_for('results', analysis_id=analysis.id) }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to Results
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .recipe-image-container {
+        position: relative;
+        background-color: #f0f0f0;
+        overflow: hidden;
+    }
+    
+    .recipe-image {
+        transition: opacity 0.3s ease-in-out;
+        will-change: opacity;
+    }
+    
+    .recipe-image-container img {
+        display: block;
+    }
+    
+    .image-loading-spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+    
+    .recipe-card {
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .recipe-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    /* Prevent layout shift - maintain fixed height */
+    .recipe-image-container {
+        min-height: 200px;
+    }
+    
+    .recipe-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+{% if analysis.status == 'completed' and ingredient_data and ingredient_data.get('ingredient_recommendations') %}
+<script>
+let currentPage = 1;
+let isLoading = false;
+let hasMore = true;
+const analysisId = {{ analysis.id }};
+const recipesPerPage = 12;
+
+// Recipe card template with improved image handling
+function createRecipeCard(recipe) {
+    const imgUrl = recipe.img_url || '';
+    const title = recipe.recipe_title || 'Untitled Recipe';
+    const recipeId = recipe.recipe_id;
+    const detailUrl = `/recipe/${recipeId}`;
+    const servings = recipe.servings || 'N/A';
+    const calories = recipe.calories || 'N/A';
+    const cookTime = recipe.cook_time_min ? recipe.cook_time_min + ' min' : 'N/A';
+    const prepTime = recipe.prep_time_min ? recipe.prep_time_min + ' min' : 'N/A';
+    
+    // Use a data URI placeholder as fallback
+    const placeholderImage = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\'%3E%3Crect fill=\'%23ddd\' width=\'400\' height=\'200\'/%3E%3Ctext fill=\'%23999\' font-family=\'sans-serif\' font-size=\'18\' dy=\'10.5\' font-weight=\'bold\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\'%3ENo Image%3C/text%3E%3C/svg%3E';
+    
+    return `
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card h-100 shadow-sm recipe-card">
+                <a href="${detailUrl}" class="text-decoration-none">
+                    <div class="recipe-image-container">
+                        <img src="${imgUrl || placeholderImage}" 
+                             class="recipe-image" 
+                             alt="${title}" 
+                             loading="lazy"
+                             data-recipe-id="${recipeId}"
+                             onerror="handleImageError(this, '${placeholderImage}');"
+                             onload="handleImageLoad(this);">
+                        <div class="image-loading-spinner" style="display: none;">
+                            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                        <a href="${detailUrl}" class="text-decoration-none text-dark">
+                            ${title}
+                        </a>
+                    </h5>
+                    <div class="mt-auto">
+                        <div class="row text-muted small mb-2">
+                            <div class="col-6">
+                                <i class="bi bi-people"></i> ${servings} servings
+                            </div>
+                            <div class="col-6">
+                                <i class="bi bi-fire"></i> ${calories} cal
+                            </div>
+                        </div>
+                        <div class="row text-muted small mb-3">
+                            <div class="col-6">
+                                <i class="bi bi-clock"></i> Prep: ${prepTime}
+                            </div>
+                            <div class="col-6">
+                                <i class="bi bi-hourglass-split"></i> Cook: ${cookTime}
+                            </div>
+                        </div>
+                        <a href="${detailUrl}" class="btn btn-primary btn-sm w-100">
+                            <i class="bi bi-eye"></i> View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Image error handler with retry prevention
+function handleImageError(img, placeholder) {
+    if (img.dataset.errorHandled === 'true') {
+        return; // Already handled, prevent infinite loop
+    }
+    
+    img.dataset.errorHandled = 'true';
+    img.style.opacity = '0';
+    
+    // Clear any timeout
+    if (img.dataset.loadTimeout) {
+        clearTimeout(img.dataset.loadTimeout);
+    }
+    
+    // Use placeholder after a short delay for smooth transition
+    setTimeout(() => {
+        img.src = placeholder;
+        img.style.opacity = '1';
+        const spinner = img.parentElement.querySelector('.image-loading-spinner');
+        if (spinner) spinner.style.display = 'none';
+    }, 100);
+}
+
+// Image load handler
+function handleImageLoad(img) {
+    // Clear timeout if image loads successfully
+    if (img.dataset.loadTimeout) {
+        clearTimeout(img.dataset.loadTimeout);
+        delete img.dataset.loadTimeout;
+    }
+    
+    img.style.opacity = '1';
+    const spinner = img.parentElement.querySelector('.image-loading-spinner');
+    if (spinner) spinner.style.display = 'none';
+}
+
+// Initialize image loading states with timeout
+function initializeImageLoading() {
+    const images = document.querySelectorAll('.recipe-image');
+    images.forEach(img => {
+        if (!img.complete && !img.dataset.errorHandled) {
+            const spinner = img.parentElement.querySelector('.image-loading-spinner');
+            if (spinner) spinner.style.display = 'block';
+            img.style.opacity = '0';
+            
+            // Set timeout for slow-loading images (5 seconds)
+            const placeholderImage = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\'%3E%3Crect fill=\'%23ddd\' width=\'400\' height=\'200\'/%3E%3Ctext fill=\'%23999\' font-family=\'sans-serif\' font-size=\'18\' dy=\'10.5\' font-weight=\'bold\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\'%3ENo Image%3C/text%3E%3C/svg%3E';
+            img.dataset.loadTimeout = setTimeout(() => {
+                if (!img.complete && !img.dataset.errorHandled) {
+                    handleImageError(img, placeholderImage);
+                }
+            }, 5000);
+        } else if (img.complete) {
+            img.style.opacity = '1';
+            const spinner = img.parentElement.querySelector('.image-loading-spinner');
+            if (spinner) spinner.style.display = 'none';
+        }
+    });
+}
+
+// Load recipes function with timeout and error handling
+async function loadRecipes(page) {
+    if (isLoading || !hasMore) return;
+    
+    isLoading = true;
+    const loadingIndicator = document.getElementById('loading-indicator');
+    const errorMessage = document.getElementById('error-message');
+    const errorText = document.getElementById('error-text');
+    
+    // Show loading indicator
+    loadingIndicator.style.display = 'block';
+    errorMessage.style.display = 'none';
+    
+    try {
+        // Add timeout to prevent hanging
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+        
+        const response = await fetch(`/api/recipes/${analysisId}?page=${page}&per_page=${recipesPerPage}`, {
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        const data = await response.json();
+        
+        if (!response.ok || data.error) {
+            throw new Error(data.error || 'Failed to load recipes');
+        }
+        
+        const recipesContainer = document.getElementById('recipes-container');
+        const emptyState = document.getElementById('empty-state');
+        
+        if (data.recipes && data.recipes.length > 0) {
+            // Hide empty state
+            emptyState.style.display = 'none';
+            
+            // Use DocumentFragment for better performance when adding multiple elements
+            const fragment = document.createDocumentFragment();
+            const tempDiv = document.createElement('div');
+            tempDiv.className = 'row';
+            
+            data.recipes.forEach(recipe => {
+                tempDiv.insertAdjacentHTML('beforeend', createRecipeCard(recipe));
+            });
+            
+            // Move all children to fragment
+            while (tempDiv.firstChild) {
+                fragment.appendChild(tempDiv.firstChild);
+            }
+            
+            // Append fragment to container (single DOM operation)
+            recipesContainer.appendChild(fragment);
+            
+            // Initialize image loading for newly added images
+            setTimeout(() => {
+                initializeImageLoading();
+            }, 100);
+            
+            // Update pagination state
+            currentPage = data.page;
+            hasMore = data.has_next !== false; // Explicitly check for false
+            
+            console.log(`Page ${data.page}: Loaded ${data.recipes.length} recipes, Total: ${data.total}, Has Next: ${hasMore}, Total Pages: ${data.total_pages}`);
+            
+            // Show end message if no more recipes
+            if (!hasMore) {
+                const endMessage = document.getElementById('end-message');
+                endMessage.style.display = 'block';
+                console.log('Reached end of recipes');
+            }
+        } else {
+            // No recipes returned
+            console.log(`Page ${data.page}: No recipes returned. Total: ${data.total}, Has Next: ${data.has_next}`);
+            
+            // Show empty state if first page is empty
+            if (currentPage === 1 && data.total === 0) {
+                emptyState.style.display = 'block';
+            }
+            
+            // Update pagination state from response
+            hasMore = data.has_next !== false;
+            
+            // Show end message if no more recipes
+            if (!hasMore) {
+                const endMessage = document.getElementById('end-message');
+                endMessage.style.display = 'block';
+            }
+        }
+    } catch (error) {
+        console.error('Error loading recipes:', error);
+        if (error.name === 'AbortError') {
+            errorText.textContent = 'Request timed out. Please refresh the page.';
+        } else {
+            errorText.textContent = error.message || 'An error occurred while loading recipes. Please try again.';
+        }
+        errorMessage.style.display = 'block';
+        hasMore = false; // Stop trying to load more on error
+    } finally {
+        isLoading = false;
+        loadingIndicator.style.display = 'none';
+    }
+}
+
+// Infinite scroll handler with better throttling
+let lastScrollTop = 0;
+let ticking = false;
+
+function handleScroll() {
+    if (ticking) return;
+    
+    ticking = true;
+    requestAnimationFrame(() => {
+        // Calculate scroll position
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Only check if scrolled down significantly (avoid checking on every pixel)
+        if (Math.abs(scrollTop - lastScrollTop) < 50) {
+            ticking = false;
+            return;
+        }
+        
+        lastScrollTop = scrollTop;
+        
+        // Load more when user is near bottom (within 300px)
+        if (scrollTop + windowHeight >= documentHeight - 300) {
+            if (hasMore && !isLoading) {
+                loadRecipes(currentPage + 1);
+            }
+        }
+        
+        ticking = false;
+    });
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    // Load first page
+    loadRecipes(1);
+    
+    // Attach scroll listener with passive option for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+});
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', function() {
+    window.removeEventListener('scroll', handleScroll);
+});
+</script>
+{% endif %}
+{% endblock %}
+

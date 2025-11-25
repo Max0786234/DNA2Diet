@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}Results - DNA2Diet{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="bi bi-graph-up"></i> Analysis Results
+                <small class="text-muted">File: {{ analysis.genome_filename }}</small>
+            </h2>
+        </div>
+    </div>
+
+    {% if analysis.status == 'processing' %}
+    <div class="card mb-4">
+        <div class="card-header bg-warning">
+            <h5><i class="bi bi-hourglass-split"></i> Analysis in Progress</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Current Step:</strong> <span id="progress-step">{{ analysis.get('progress_step', 'Processing...') }}</span></p>
+            <div class="progress mb-3" style="height: 30px;">
+                <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" 
+                     role="progressbar" style="width: {{ analysis.get('progress_percent', 0) }}%"
+                     aria-valuenow="{{ analysis.get('progress_percent', 0) }}" aria-valuemin="0" aria-valuemax="100">
+                    <span id="progress-text">{{ analysis.get('progress_percent', 0) }}%</span>
+                </div>
+            </div>
+            <p class="text-muted small">Processing time: <span id="elapsed-time">-</span></p>
+            <button class="btn btn-sm btn-primary" onclick="location.reload()">
+                <i class="bi bi-arrow-clockwise"></i> Refresh Status
+            </button>
+        </div>
+    </div>
+    {% elif analysis.status == 'failed' %}
+    <div class="alert alert-danger">
+        <i class="bi bi-x-circle"></i> 
+        <strong>Analysis Failed</strong>
+        {% if analysis.error_message %}
+        <p class="mt-2">{{ analysis.error_message }}</p>
+        {% endif %}
+    </div>
+    {% elif analysis.status == 'completed' and results %}
+
+    <!-- Diseases Section -->
+    {% if results.diseases %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5><i class="bi bi-exclamation-triangle"></i> Disease Risk Analysis</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Disease / Trait</th>
+                            <th>Risk Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for disease in results.diseases[:20] %}
+                        <tr>
+                            <td><span class="badge bg-secondary">#{{ disease.rank }}</span></td>
+                            <td><strong>{{ disease.trait }}</strong></td>
+                            <td>
+                                {% if 'high' in disease.interpretation.lower() %}
+                                    <span class="badge bg-danger">High Risk</span>
+                                {% elif 'moderate' in disease.interpretation.lower() %}
+                                    <span class="badge bg-warning">Moderate Risk</span>
+                                {% else %}
+                                    <span class="badge bg-success">Low Risk</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Ingredients Section -->
+    {% if results.ingredients and results.ingredients.ingredient_recommendations %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5><i class="bi bi-check-circle"></i> Recommended Ingredients (Prefer)</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for ingredient, data in results.ingredients.ingredient_recommendations.items() %}
+                            {% if data.final_action == 'prefer' %}
+                            <li class="list-group-item">
+                                <strong>{{ ingredient }}</strong>
+                                <span class="badge bg-success ms-2">{{ data.counts.get('prefer', 0) }} evidence</span>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h5><i class="bi bi-x-circle"></i> Ingredients to Avoid</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for ingredient, data in results.ingredients.ingredient_recommendations.items() %}
+                            {% if data.final_action == 'avoid' %}
+                            <li class="list-group-item">
+                                <strong>{{ ingredient }}</strong>
+                                <span class="badge bg-danger ms-2">{{ data.counts.get('avoid', 0) }} evidence</span>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% else %}
+    <div class="alert alert-info">
+        <i class="bi bi-info-circle"></i> No results available yet. Please check back later.
+    </div>
+    {% endif %}
+
+    <!-- Recipe Recommendations Section -->
+    {% if analysis.status == 'completed' and results.ingredients and results.ingredients.ingredient_recommendations %}
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5><i class="bi bi-cup-hot"></i> Recipe Recommendations</h5>
+        </div>
+        <div class="card-body">
+            <p class="mb-3">Get personalized recipe recommendations based on your ingredient preferences.</p>
+            <a href="{{ url_for('recipes', analysis_id=analysis.id) }}" class="btn btn-primary btn-lg">
+                <i class="bi bi-cup-hot"></i> View Recipe Recommendations
+            </a>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="mt-4">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% if analysis.status == 'processing' %}
+<script>
+let startTime = new Date('{{ analysis.created_at }}');
+let checkInterval;
+
+function updateProgress() {
+    fetch('/api/analysis_status/{{ analysis.id }}')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'completed') {
+                location.reload();
+            } else if (data.status === 'failed') {
+                location.reload();
+            } else {
+                // Update progress bar
+                const progressBar = document.getElementById('progress-bar');
+                const progressText = document.getElementById('progress-text');
+                const progressStep = document.getElementById('progress-step');
+                
+                if (progressBar && data.progress_percent !== undefined) {
+                    progressBar.style.width = data.progress_percent + '%';
+                    progressBar.setAttribute('aria-valuenow', data.progress_percent);
+                }
+                if (progressText) {
+                    progressText.textContent = (data.progress_percent || 0) + '%';
+                }
+                if (progressStep && data.progress_step) {
+                    progressStep.textContent = data.progress_step;
+                }
+                
+                // Update elapsed time
+                const elapsed = Math.floor((new Date() - startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                const elapsedEl = document.getElementById('elapsed-time');
+                if (elapsedEl) {
+                    elapsedEl.textContent = minutes + 'm ' + seconds + 's';
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching progress:', error);
+        });
+}
+
+// Update progress every 3 seconds
+checkInterval = setInterval(updateProgress, 3000);
+updateProgress(); // Initial update
+</script>
+{% endif %}
+{% endblock %}
+

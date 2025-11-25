@@ -1,0 +1,128 @@
+[
+  {
+    "trait": "pulmonary arterial hypertension",
+    "mesh_id": "D000081029",
+    "n_SNPs_in_file": 1,
+    "n_with_genotype": 1,
+    "percentile": 87.1375,
+    "absolute_probability": 0.4810744810744811,
+    "interpretation": "high_absolute_risk",
+    "confidence": "low",
+    "confidence_reasons": "few_snps;few_sim_snps",
+    "prevalence_used": "0.32",
+    "top_snps": [
+      {
+        "rsid": "rs2217560",
+        "genotype": "AG",
+        "risk_allele": "rs2217560-G",
+        "effect_raw": 1.97,
+        "mapped_gene": "LINC01899 - CBLN2"
+      }
+    ]
+  },
+  {
+    "trait": "chronic kidney disease",
+    "mesh_id": "D012080",
+    "n_SNPs_in_file": 2,
+    "n_with_genotype": 2,
+    "percentile": 2.075,
+    "absolute_probability": 0.13809433604849403,
+    "interpretation": "moderate_absolute_risk",
+    "confidence": "low",
+    "confidence_reasons": "few_snps;few_sim_snps",
+    "prevalence_used": "0.09",
+    "top_snps": [
+      {
+        "rsid": "rs12601558",
+        "genotype": "CC",
+        "risk_allele": "rs12601558-?",
+        "effect_raw": 1.79,
+        "mapped_gene": "SLC16A3"
+      },
+      {
+        "rsid": "rs9895232",
+        "genotype": "CT",
+        "risk_allele": "rs9895232-C",
+        "effect_raw": 1.62,
+        "mapped_gene": "LINC01996"
+      }
+    ]
+  },
+  {
+    "trait": "migraine disorder",
+    "mesh_id": "D008881",
+    "n_SNPs_in_file": 18,
+    "n_with_genotype": 14,
+    "percentile": null,
+    "absolute_probability": 0.06551932276922724,
+    "interpretation": "moderate_absolute_risk",
+    "confidence": "medium",
+    "confidence_reasons": "few_sim_snps",
+    "prevalence_used": "0.07",
+    "top_snps": [
+      {
+        "rsid": "rs4664436",
+        "genotype": "CC",
+        "risk_allele": "rs4664436-T",
+        "effect_raw": 1.05,
+        "mapped_gene": "SLC4A10"
+      },
+      {
+        "rsid": "rs2670139",
+        "genotype": "TT",
+        "risk_allele": "rs2670139-C",
+        "effect_raw": 1.03,
+        "mapped_gene": "DENND1A"
+      },
+      {
+        "rsid": "rs4619890",
+        "genotype": "AG",
+        "risk_allele": "rs4619890-G",
+        "effect_raw": 1.02,
+        "mapped_gene": "AFAP1"
+      },
+      {
+        "rsid": "rs3791101",
+        "genotype": "GG",
+        "risk_allele": "rs3791101-A",
+        "effect_raw": 1.01,
+        "mapped_gene": "ST3GAL3"
+      },
+      {
+        "rsid": "rs2429909",
+        "genotype": "GG",
+        "risk_allele": "rs2429909-A",
+        "effect_raw": 1.01,
+        "mapped_gene": "SGSM2"
+      }
+    ]
+  },
+  {
+    "trait": "stroke",
+    "mesh_id": "D020521",
+    "n_SNPs_in_file": 2,
+    "n_with_genotype": 2,
+    "percentile": 90.6875,
+    "absolute_probability": 0.02,
+    "interpretation": "low_absolute_risk",
+    "confidence": "low",
+    "confidence_reasons": "few_snps;few_sim_snps",
+    "prevalence_used": "0.02",
+    "top_snps": [
+      {
+        "rsid": "rs7041637",
+        "genotype": "CC",
+        "risk_allele": "rs7041637-A",
+        "effect_raw": 0.103463,
+        "mapped_gene": "CDKN2A-AS1"
+      },
+      {
+        "rsid": "rs1333040",
+        "genotype": "CC",
+        "risk_allele": "rs1333040-T",
+        "effect_raw": 0.0985837,
+        "mapped_gene": "CDKN2B-AS1"
+      }
+    ]
+  }
+]

@@ -1,0 +1,177 @@
+import json, os, csv
+from collections import defaultdict, Counter
+
+# ------- Configuration -------
+INPUT_JSON = "disease.json"  # your dataset file
+OUT_PER_DISEASE = "per_disease_food_advice.json"
+OUT_ING_JSON = "ingredient_recommendations.json"
+OUT_ING_CSV = "ingredient_recommendations.csv"
+# -----------------------------
+
+def norm_food(s):
+    if not s:
+        return ""
+    return str(s).strip().lower()
+
+def interpret_association(assoc_str):
+    """
+    Map association string to action:
+    - "Positive" → prefer / beneficial
+    - "Negative" → avoid / harmful
+    - else → neutral
+    """
+    s = str(assoc_str).strip().lower()
+    if s == "positive":
+        return "prefer"
+    if s == "negative":
+        return "avoid"
+    return "neutral"
+
+def process_dataset(path):
+    with open(path, "r", encoding="utf-8") as f:
+        arr = json.load(f)
+
+    per_disease = {}  # disease -> food -> list of evidence records
+    aggregate = defaultdict(list)
+
+    for rec in arr:
+        trait = rec.get("trait") or ""
+        trait_key = trait.strip().lower()
+        result = rec.get("result") or {}
+        fd_list = result.get("foodDiseases") or []
+        per_map = {}
+
+        for fd in fd_list:
+            food = fd.get("food-term") or fd.get("food_term") or ""
+            food_norm = norm_food(food)
+            if not food_norm:
+                continue
+            assoc = fd.get("association")
+            pmid = fd.get("pmid")
+            sentence = fd.get("sentence")
+            action = interpret_association(assoc)
+
+            evidence = {
+                "food_term": food,
+                "association": assoc,
+                "pmid": pmid,
+                "sentence": sentence,
+                "action": action
+            }
+
+            per_map.setdefault(food_norm, []).append(evidence)
+            aggregate[food_norm].append({
+                "disease": trait_key,
+                "evidence": evidence
+            })
+
+        per_disease[trait_key] = per_map
+
+    return per_disease, aggregate
+
+def collapse_per_disease(per_disease):
+    """
+    From per_disease raw (food -> list of evidence), derive consensus action:
+    - If any evidence says "avoid", disease-level = avoid
+    - Else if any evidence says "prefer", disease-level = prefer
+    - Else neutral
+    """
+    out = {}
+    for disease, fmap in per_disease.items():
+        out[disease] = {}
+        for food, evs in fmap.items():
+            actions = [e["action"] for e in evs]
+            if "avoid" in actions:
+                act = "avoid"
+            elif "prefer" in actions:
+                act = "prefer"
+            else:
+                act = "neutral"
+            out[disease][food] = {
+                "action": act,
+                "evidences": evs
+            }
+    return out
+
+def aggregate_across_diseases(collapsed_map):
+    """
+    Aggregate food actions across diseases:
+    - If any disease-level says "avoid" ⇒ final = "avoid"
+    - Else if any says "prefer" ⇒ "prefer"
+    - Else “neutral”
+    """
+    ing_reasons = defaultdict(list)
+    for disease, fmap in collapsed_map.items():
+        for food, info in fmap.items():
+            ing_reasons[food].append({
+                "disease": disease,
+                "action": info["action"],
+                "evidence_count": len(info["evidences"]),
+                "evidences": info["evidences"]
+            })
+
+    final = {}
+    for food, reasons in ing_reasons.items():
+        acts = [r["action"] for r in reasons]
+        if "avoid" in acts:
+            final_action = "avoid"
+        elif "prefer" in acts:
+            final_action = "prefer"
+        else:
+            final_action = "neutral"
+        final[food] = {
+            "final_action": final_action,
+            "reasons": reasons,
+            "counts": dict(Counter(acts))
+        }
+    return final
+
+def write_outputs(collapsed, final_map):
+    # per-disease advice
+    with open(OUT_PER_DISEASE, "w", encoding="utf-8") as f:
+        json.dump(collapsed, f, indent=2, ensure_ascii=False)
+
+    # combined JSON
+    combined = {
+        "per_disease": collapsed,
+        "ingredient_recommendations": final_map
+    }
+    with open(OUT_ING_JSON, "w", encoding="utf-8") as f:
+        json.dump(combined, f, indent=2, ensure_ascii=False)
+
+    # CSV
+    with open(OUT_ING_CSV, "w", newline="", encoding="utf-8") as csvf:
+        writer = csv.writer(csvf)
+        writer.writerow(["ingredient","final_action","avoid_count","prefer_count","neutral_count","example_disease","example_action","example_pmid","example_sentence"])
+        for food, meta in sorted(final_map.items()):
+            cnt = meta["counts"]
+            reasons = meta["reasons"]
+            ex = reasons[0] if reasons else {}
+            ex_e = ex.get("evidences", [{}])[0]
+            writer.writerow([
+                food,
+                meta["final_action"],
+                cnt.get("avoid",0),
+                cnt.get("prefer",0),
+                cnt.get("neutral",0),
+                ex.get("disease",""),
+                ex.get("action",""),
+                ex_e.get("pmid",""),
+                (ex_e.get("sentence") or "")[:200].replace("\n"," ")
+            ])
+    print("Wrote:", OUT_PER_DISEASE, OUT_ING_JSON, OUT_ING_CSV)
+
+if __name__ == "__main__":
+    if not os.path.exists(INPUT_JSON):
+        raise FileNotFoundError(f"{INPUT_JSON} not found.")
+    per_raw, agg = process_dataset(INPUT_JSON)
+    per_coll = collapse_per_disease(per_raw)
+    final_map = aggregate_across_diseases(per_coll)
+    write_outputs(per_coll, final_map)
+
+    # print preview
+    avoid = [f for f,v in final_map.items() if v["final_action"] == "avoid"]
+    prefer = [f for f,v in final_map.items() if v["final_action"] == "prefer"]
+    print("Total ingredients:", len(final_map))
+    print("Avoid (top 10):", avoid[:10])
+    print("Prefer (top 10):", prefer[:10])

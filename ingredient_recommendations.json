@@ -1,0 +1,603 @@
+{
+  "per_disease": {
+    "stroke": {
+      "rhubarb": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "Rhubarb",
+            "association": "Positive",
+            "pmid": "26495006",
+            "sentence": "|Rhubarb| root and rhizome (RRR) has been clinically used for |stroke| at least 2000 years and is still used in modern times in both China and elsewhere worldwide.",
+            "action": "prefer"
+          }
+        ]
+      },
+      "gastrodia elata": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "Gastrodia elata",
+            "association": "Positive",
+            "pmid": "17089323",
+            "sentence": "The phenolic glucoside gastrodin (Gas) is a main component extracted from the rhizome of |Gastrodia elata|, a Chinese herbal medicine, which has long been used for treating dizziness, epilepsy, |stroke| and dementia.",
+            "action": "prefer"
+          }
+        ]
+      },
+      "ginkgo biloba": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "Ginkgo biloba",
+            "association": "Positive",
+            "pmid": "22100334",
+            "sentence": "EGb761 is a standard extract of |Ginkgo biloba|, which is a kind of traditional Chinese herbs that has widely used in clinic treatment of |stroke| in China.",
+            "action": "prefer"
+          }
+        ]
+      },
+      "aralia cordata": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "Aralia cordata",
+            "association": "Positive",
+            "pmid": "19557371",
+            "sentence": "In future, |Aralia cordata| might play a therapeutic role in the prevention and treatment of |neurodegeneration in stroke|.",
+            "action": "prefer"
+          }
+        ]
+      },
+      "scutellaria baicalensis": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "Scutellaria baicalensis",
+            "association": "Positive",
+            "pmid": "15467195",
+            "sentence": "These findings, along with previous reports demonstrating the neuroprotective effects of wogonin, provide strong pharmacological basis for the use of wogonin or |Scutellaria baicalensis| in the treatment of |stroke|.",
+            "action": "prefer"
+          }
+        ]
+      },
+      "cocoa": {
+        "action": "avoid",
+        "evidences": [
+          {
+            "food_term": "cocoa",
+            "association": "Negative",
+            "pmid": "19577379",
+            "sentence": "The Kuna Indians of Panama, who regularly consume large amounts of flavanol-rich |cocoa|, are virtually free of hypertension and |stroke|, even though they salt their food.",
+            "action": "avoid"
+          }
+        ]
+      },
+      "celery": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "celery",
+            "association": "Positive",
+            "pmid": "24034079",
+            "sentence": "BACKGROUND: Dl-3-n-butylphthalide (NBP), first isolated from the seeds of |celery|, showed efficacy in animal models of |stroke|.",
+            "action": "prefer"
+          }
+        ]
+      },
+      "coffee": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "coffee",
+            "association": "Positive",
+            "pmid": "23493733",
+            "sentence": "CONCLUSIONS: Higher green tea and |coffee| consumption were inversely associated with risk of CVD and |stroke| in general population.",
+            "action": "prefer"
+          },
+          {
+            "food_term": "coffee",
+            "association": "Positive",
+            "pmid": "23493733",
+            "sentence": "Higher green tea or |coffee| consumption reduced the risks of CVD and |stroke| subtypes (especially in intracerebral hemorrhage, P for interaction between green tea and coffee=0.04).",
+            "action": "prefer"
+          }
+        ]
+      },
+      "ginseng": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "ginseng",
+            "association": "Positive",
+            "pmid": "25498890",
+            "sentence": "OBJECTIVE \"AIMS\": Ginsenoside-Rg1 (G-Rg1), a saponin that is a primary component of |ginseng|, is very useful and important in traditional Chinese medicine for |stroke|.",
+            "action": "prefer"
+          }
+        ]
+      }
+    },
+    "migraine disorder": {
+      "peppermint": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "peppermint",
+            "association": "Positive",
+            "pmid": "12509588",
+            "sentence": "There seemed to be greater improvement when therapy (famotidine, pizotifen, |peppermint| oil) was targeted to the specific functional gastrointestinal disorder (dyspepsia, |abdominal migraine|, irritable bowel syndrome).",
+            "action": "prefer"
+          }
+        ]
+      },
+      "verbascum thapsus l.": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "Verbascum thapsus L.",
+            "association": "Positive",
+            "pmid": "21834240",
+            "sentence": "|Verbascum thapsus L.| is a medicinal plant and has been used to treat numerous pulmonary diseases, asthma, inflammatory disease, spasmodic coughs and |migraine headaches|.",
+            "action": "prefer"
+          }
+        ]
+      },
+      "tanacetum parthenium": {
+        "action": "prefer",
+        "evidences": [
+          {
+            "food_term": "Tanacetum parthenium",
+            "association": "Positive",
+            "pmid": "16033387",
+            "sentence": "|Tanacetum parthenium| (TP) is a member of the Asteracee family long used empirically as a herbal remedy for |migraine|.",
+            "action": "prefer"
+          }
+        ]
+      },
+      "coffee": {
+        "action": "avoid",
+        "evidences": [
+          {
+            "food_term": "coffee",
+            "association": "Negative",
+            "pmid": "12780761",
+            "sentence": "Excessive caffeine consumption, mostly in the form of |coffee| and tea, is a well-recognized cause of headache or |migraine|, and withdrawal can cause headache.",
+            "action": "avoid"
+          }
+        ]
+      },
+      "pork": {
+        "action": "avoid",
+        "evidences": [
+          {
+            "food_term": "pork",
+            "association": "Negative",
+            "pmid": "8681169",
+            "sentence": "A certain number such as citrus fruits, tea, coffee, |pork|, chocolate, milk, nuts, vegetables and cola drinks have been cited as possible allergens associated with |migraine|.",
+            "action": "avoid"
+          }
+        ]
+      },
+      "cheese": {
+        "action": "avoid",
+        "evidences": [
+          {
+            "food_term": "cheese",
+            "association": "Negative",
+            "pmid": "12657413",
+            "sentence": "The list of foods, beverages, and additives that trigger |migraine| includes |cheese|, chocolate, citrus fruits, hot dogs, monosodium glutamate, aspartame, fatty foods, ice cream, caffeine withdrawal, and alcoholic drinks, especially red wine and beer.",
+            "action": "avoid"
+          },
+          {
+            "food_term": "cheese",
+            "association": "Negative",
+            "pmid": "8681169",
+            "sentence": "Such foods as chocolate, |cheese|, citrus fruits, bananas, nuts, 'cured' meats, dairy products, cereals, beans, hot dogs, pizza, food additives (sodium nitrate, monosodium glutamate in Chinese restaurant food, aspartame as a sweetener), coffee, tea, cola drinks, alcoholic drinks such as red wine, beer or whisky distilled in copper stills, all may bring on a |migraine| attack.",
+            "action": "avoid"
+          },
+          {
+            "food_term": "cheese",
+            "association": "Negative",
+            "pmid": "7635722",
+            "sentence": "Four hundred twenty-nine patients had |migraine|, of which 16.5% reported that headaches could be precipitated by |cheese| or chocolate, and nearly always both.",
+            "action": "avoid"
+          }
+        ]
+      },
+      "white wine": {
+        "action": "avoid",
+        "evidences": [
+          {
+            "food_term": "white wine",
+            "association": "Negative",
+            "pmid": "10370878",
+            "sentence": "Moreover, it emerged that alcoholic beverage intake during stress periods was related to a significantly higher frequency of |migraine| attacks (p > 0.0001 for spirits and sparkling wines, p > 0.009 for red wine and p > 0.006 and p > 0.004 for |white wine| and beer, respectively).",
+            "action": "avoid"
+          },
+          {
+            "food_term": "white wine",
+            "association": "Negative",
+            "pmid": "18231712",
+            "sentence": "Red wine was reported to be the principal trigger of |migraine|, but other studies show that |white wine| or other drinks are more involved.",
+            "action": "avoid"
+          }
+        ]
+      }
+    }
+  },
+  "ingredient_recommendations": {
+    "rhubarb": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "stroke",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "Rhubarb",
+              "association": "Positive",
+              "pmid": "26495006",
+              "sentence": "|Rhubarb| root and rhizome (RRR) has been clinically used for |stroke| at least 2000 years and is still used in modern times in both China and elsewhere worldwide.",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "gastrodia elata": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "stroke",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "Gastrodia elata",
+              "association": "Positive",
+              "pmid": "17089323",
+              "sentence": "The phenolic glucoside gastrodin (Gas) is a main component extracted from the rhizome of |Gastrodia elata|, a Chinese herbal medicine, which has long been used for treating dizziness, epilepsy, |stroke| and dementia.",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "ginkgo biloba": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "stroke",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "Ginkgo biloba",
+              "association": "Positive",
+              "pmid": "22100334",
+              "sentence": "EGb761 is a standard extract of |Ginkgo biloba|, which is a kind of traditional Chinese herbs that has widely used in clinic treatment of |stroke| in China.",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "aralia cordata": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "stroke",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "Aralia cordata",
+              "association": "Positive",
+              "pmid": "19557371",
+              "sentence": "In future, |Aralia cordata| might play a therapeutic role in the prevention and treatment of |neurodegeneration in stroke|.",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "scutellaria baicalensis": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "stroke",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "Scutellaria baicalensis",
+              "association": "Positive",
+              "pmid": "15467195",
+              "sentence": "These findings, along with previous reports demonstrating the neuroprotective effects of wogonin, provide strong pharmacological basis for the use of wogonin or |Scutellaria baicalensis| in the treatment of |stroke|.",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "cocoa": {
+      "final_action": "avoid",
+      "reasons": [
+        {
+          "disease": "stroke",
+          "action": "avoid",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "cocoa",
+              "association": "Negative",
+              "pmid": "19577379",
+              "sentence": "The Kuna Indians of Panama, who regularly consume large amounts of flavanol-rich |cocoa|, are virtually free of hypertension and |stroke|, even though they salt their food.",
+              "action": "avoid"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "avoid": 1
+      }
+    },
+    "celery": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "stroke",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "celery",
+              "association": "Positive",
+              "pmid": "24034079",
+              "sentence": "BACKGROUND: Dl-3-n-butylphthalide (NBP), first isolated from the seeds of |celery|, showed efficacy in animal models of |stroke|.",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "coffee": {
+      "final_action": "avoid",
+      "reasons": [
+        {
+          "disease": "stroke",
+          "action": "prefer",
+          "evidence_count": 2,
+          "evidences": [
+            {
+              "food_term": "coffee",
+              "association": "Positive",
+              "pmid": "23493733",
+              "sentence": "CONCLUSIONS: Higher green tea and |coffee| consumption were inversely associated with risk of CVD and |stroke| in general population.",
+              "action": "prefer"
+            },
+            {
+              "food_term": "coffee",
+              "association": "Positive",
+              "pmid": "23493733",
+              "sentence": "Higher green tea or |coffee| consumption reduced the risks of CVD and |stroke| subtypes (especially in intracerebral hemorrhage, P for interaction between green tea and coffee=0.04).",
+              "action": "prefer"
+            }
+          ]
+        },
+        {
+          "disease": "migraine disorder",
+          "action": "avoid",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "coffee",
+              "association": "Negative",
+              "pmid": "12780761",
+              "sentence": "Excessive caffeine consumption, mostly in the form of |coffee| and tea, is a well-recognized cause of headache or |migraine|, and withdrawal can cause headache.",
+              "action": "avoid"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1,
+        "avoid": 1
+      }
+    },
+    "ginseng": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "stroke",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "ginseng",
+              "association": "Positive",
+              "pmid": "25498890",
+              "sentence": "OBJECTIVE \"AIMS\": Ginsenoside-Rg1 (G-Rg1), a saponin that is a primary component of |ginseng|, is very useful and important in traditional Chinese medicine for |stroke|.",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "peppermint": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "migraine disorder",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "peppermint",
+              "association": "Positive",
+              "pmid": "12509588",
+              "sentence": "There seemed to be greater improvement when therapy (famotidine, pizotifen, |peppermint| oil) was targeted to the specific functional gastrointestinal disorder (dyspepsia, |abdominal migraine|, irritable bowel syndrome).",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "verbascum thapsus l.": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "migraine disorder",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "Verbascum thapsus L.",
+              "association": "Positive",
+              "pmid": "21834240",
+              "sentence": "|Verbascum thapsus L.| is a medicinal plant and has been used to treat numerous pulmonary diseases, asthma, inflammatory disease, spasmodic coughs and |migraine headaches|.",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "tanacetum parthenium": {
+      "final_action": "prefer",
+      "reasons": [
+        {
+          "disease": "migraine disorder",
+          "action": "prefer",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "Tanacetum parthenium",
+              "association": "Positive",
+              "pmid": "16033387",
+              "sentence": "|Tanacetum parthenium| (TP) is a member of the Asteracee family long used empirically as a herbal remedy for |migraine|.",
+              "action": "prefer"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "prefer": 1
+      }
+    },
+    "pork": {
+      "final_action": "avoid",
+      "reasons": [
+        {
+          "disease": "migraine disorder",
+          "action": "avoid",
+          "evidence_count": 1,
+          "evidences": [
+            {
+              "food_term": "pork",
+              "association": "Negative",
+              "pmid": "8681169",
+              "sentence": "A certain number such as citrus fruits, tea, coffee, |pork|, chocolate, milk, nuts, vegetables and cola drinks have been cited as possible allergens associated with |migraine|.",
+              "action": "avoid"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "avoid": 1
+      }
+    },
+    "cheese": {
+      "final_action": "avoid",
+      "reasons": [
+        {
+          "disease": "migraine disorder",
+          "action": "avoid",
+          "evidence_count": 3,
+          "evidences": [
+            {
+              "food_term": "cheese",
+              "association": "Negative",
+              "pmid": "12657413",
+              "sentence": "The list of foods, beverages, and additives that trigger |migraine| includes |cheese|, chocolate, citrus fruits, hot dogs, monosodium glutamate, aspartame, fatty foods, ice cream, caffeine withdrawal, and alcoholic drinks, especially red wine and beer.",
+              "action": "avoid"
+            },
+            {
+              "food_term": "cheese",
+              "association": "Negative",
+              "pmid": "8681169",
+              "sentence": "Such foods as chocolate, |cheese|, citrus fruits, bananas, nuts, 'cured' meats, dairy products, cereals, beans, hot dogs, pizza, food additives (sodium nitrate, monosodium glutamate in Chinese restaurant food, aspartame as a sweetener), coffee, tea, cola drinks, alcoholic drinks such as red wine, beer or whisky distilled in copper stills, all may bring on a |migraine| attack.",
+              "action": "avoid"
+            },
+            {
+              "food_term": "cheese",
+              "association": "Negative",
+              "pmid": "7635722",
+              "sentence": "Four hundred twenty-nine patients had |migraine|, of which 16.5% reported that headaches could be precipitated by |cheese| or chocolate, and nearly always both.",
+              "action": "avoid"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "avoid": 1
+      }
+    },
+    "white wine": {
+      "final_action": "avoid",
+      "reasons": [
+        {
+          "disease": "migraine disorder",
+          "action": "avoid",
+          "evidence_count": 2,
+          "evidences": [
+            {
+              "food_term": "white wine",
+              "association": "Negative",
+              "pmid": "10370878",
+              "sentence": "Moreover, it emerged that alcoholic beverage intake during stress periods was related to a significantly higher frequency of |migraine| attacks (p > 0.0001 for spirits and sparkling wines, p > 0.009 for red wine and p > 0.006 and p > 0.004 for |white wine| and beer, respectively).",
+              "action": "avoid"
+            },
+            {
+              "food_term": "white wine",
+              "association": "Negative",
+              "pmid": "18231712",
+              "sentence": "Red wine was reported to be the principal trigger of |migraine|, but other studies show that |white wine| or other drinks are more involved.",
+              "action": "avoid"
+            }
+          ]
+        }
+      ],
+      "counts": {
+        "avoid": 1
+      }
+    }
+  }
+}

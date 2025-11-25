@@ -1,0 +1,134 @@
+{
+    "diseases": [
+        {
+            "_id": "67b37e855ebdba700361d956",
+            "Disease ID": "MESH:D007787",
+            "Disease-name": "Lactose Intolerance",
+            "Other IDs": "DO:DOID:10604",
+            "Parent IDs": "MESH:D002239|MESH:D008286",
+            "Disease-treenum": "C06.405.469.637.506|C16.320.565.202.589|C18.452.603.506|C18.452.648.202.589",
+            "Disease-synonyms": "Alactasia|Dairy Product Intolerance|Hypolactasia|Intolerance, Lactose|Lactose Malabsorption|Malabsorption, Lactose|Milk Sugar Intolerance",
+            "Disease-category": "Digestive system disease|Genetic disease (inborn)|Metabolic disease"
+        }
+    ],
+    "foodDiseases": [
+        {
+            "_id": "67842af9c3da1c6492bc7e4a",
+            "association": "Positive",
+            "disease-id": "MESH:D007787",
+            "disease-term": "lactose intolerance symptoms",
+            "food-id": "Dairy ID:16",
+            "food-term": "kefir",
+            "food-type": "Dairy",
+            "pmid": "21390946",
+            "sentence": "Due to the claimed health benefits of kefir which include reduction of |lactose intolerance symptoms|, stimulation of the immune system, lowering cholesterol, and antimutagenic and anticarcinogenic properties, kefir has become an important functional dairy food and consequently, research on |kefir| has increased in the past decade."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc7e48",
+            "association": "Positive",
+            "disease-id": "MESH:D007787",
+            "disease-term": "lactose intolerance symptoms",
+            "food-id": "Dairy ID:16",
+            "food-term": "kefir",
+            "food-type": "Dairy",
+            "pmid": "21390946",
+            "sentence": "Due to the claimed health benefits of |kefir| which include reduction of |lactose intolerance symptoms|, stimulation of the immune system, lowering cholesterol, and antimutagenic and anticarcinogenic properties, kefir has become an important functional dairy food and consequently, research on kefir has increased in the past decade."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc7e49",
+            "association": "Positive",
+            "disease-id": "MESH:D007787",
+            "disease-term": "lactose intolerance symptoms",
+            "food-id": "Dairy ID:16",
+            "food-term": "kefir",
+            "food-type": "Dairy",
+            "pmid": "21390946",
+            "sentence": "Due to the claimed health benefits of kefir which include reduction of |lactose intolerance symptoms|, stimulation of the immune system, lowering cholesterol, and antimutagenic and anticarcinogenic properties, |kefir| has become an important functional dairy food and consequently, research on kefir has increased in the past decade."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc7f98",
+            "association": "Positive",
+            "disease-id": "MESH:D007787",
+            "disease-term": "lactose malabsorption",
+            "food-id": "Dairy ID:2",
+            "food-term": "yogurt",
+            "food-type": "Dairy",
+            "pmid": "7699133",
+            "sentence": "These subjects ingested the |yogurt| meals after a 12-h fast, and |lactose malabsorption| was determined by measuring breath hydrogen."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc7f96",
+            "association": "Positive",
+            "disease-id": "MESH:D007787",
+            "disease-term": "lactose malabsorption",
+            "food-id": "Dairy ID:2",
+            "food-term": "yogurt",
+            "food-type": "Dairy",
+            "pmid": "7714685",
+            "sentence": "The findings of our study suggested the usefulness of dietary supplementation with |yogurt|, a lactose-containing food, in children who developed |lactose malabsorption|."
+        },
+        {
+            "_id": "67842afcc3da1c6492bcb2da",
+            "association": "Positive",
+            "disease-id": "MESH:D007787",
+            "disease-term": "soybean",
+            "food-id": "Plant ID:3847",
+            "food-term": "soybean",
+            "food-type": "Plant",
+            "pmid": "1037070",
+            "sentence": "Chestnut pulp is recommended as an alternative to |soybean| in the treatment of |lactose intolerance| and cow 's milk allergy ."
+        },
+        {
+            "_id": "67842b02c3da1c6492bd3273",
+            "association": "Positive",
+            "disease-id": "MESH:D007787",
+            "disease-term": "Brassica napus",
+            "food-id": "PlantDer ID: 193",
+            "food-term": "Brassica napus",
+            "food-type": "Plant",
+            "pmid": "18942997",
+            "sentence": "These findings suggest that |Brassica napus| seed meal amendments can be a useful tool in the management of apple replant disease and , in the case of Rhizoctonia spp . , that disease control operates through mechanisms other than production of |glucosinolate hydrolysis products| ."
+        },
+        {
+            "_id": "67842b04c3da1c6492bd6491",
+            "association": "Negative",
+            "disease-id": "MESH:D007787",
+            "disease-term": "cow 's milk",
+            "food-id": "Dairy ID:9",
+            "food-term": "cow 's milk",
+            "food-type": "Dairy",
+            "pmid": "4003954",
+            "sentence": "Nine had |lactose malabsorption| , associated in two with saccharose malabsorption and in one with |cow 's milk| protein intolerance ."
+        },
+        {
+            "_id": "67842b04c3da1c6492bd65d4",
+            "association": "Negative",
+            "disease-id": "MESH:D007787",
+            "disease-term": "cow 's milk",
+            "food-id": "Dairy ID:9",
+            "food-term": "cow 's milk",
+            "food-type": "Dairy",
+            "pmid": "25575046",
+            "sentence": "Medical reasons include |lactose intolerance| , with a worldwide prevalence of 75 % , and |cow 's milk| allergy ."
+        },
+        {
+            "_id": "67842b04c3da1c6492bd67b1",
+            "association": "Positive",
+            "disease-id": "MESH:D007787",
+            "disease-term": "cow 's milk",
+            "food-id": "Dairy ID:9",
+            "food-term": "cow 's milk",
+            "food-type": "Dairy",
+            "pmid": "20306474",
+            "sentence": "Enzymatic hydrolysis and further processing are commonly used to produce |hypoallergenic dietary products| derived from different protein sources , such as |cow 's milk| ."
+        }
+    ],
+    "pagination": {
+        "page": 1,
+        "limit": 10,
+        "totalPages": 2,
+        "totalDiseases": 1,
+        "totalFoodDiseases": 11,
+        "totalPagesFoodDiseases": 2
+    }
+}

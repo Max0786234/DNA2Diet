@@ -1,0 +1,134 @@
+{
+    "diseases": [
+        {
+            "_id": "67b37e845ebdba700361d38f",
+            "Disease ID": "MESH:D008881",
+            "Disease-name": "Migraine Disorders",
+            "Other IDs": "DO:DOID:6364",
+            "Parent IDs": "MESH:D051270",
+            "Disease-treenum": "C10.228.140.546.399.750",
+            "Disease-synonyms": "Abdominal Migraine|Abdominal Migraines|Acute Confusional Migraine|Acute Confusional Migraines|Cervical Migraine Syndrome|Cervical Migraine Syndromes|Disorder, Migraine|Disorders, Migraine|Headache, Migraine|Headache, Sick|Headaches, Migraine|Headaches, Sick|Hemicrania Migraine|Hemicrania Migraines|Migraine|Migraine, Abdominal|Migraine, Acute Confusional|Migraine Disorder|Migraine Headache|Migraine Headaches|Migraine, Hemicrania|Migraines|Migraines, Abdominal|Migraines, Acute Confusional|Migraines, Hemicrania|Migraine Syndrome, Cervical|Migraine Syndromes, Cervical|Migraine Variant|Migraine Variants|Sick Headache|Sick Headaches|Status Migrainosus|Variant, Migraine|Variants, Migraine",
+            "Disease-category": "Nervous system disease"
+        }
+    ],
+    "foodDiseases": [
+        {
+            "_id": "67842af8c3da1c6492bc6c41",
+            "association": "Positive",
+            "disease-id": "MESH:D008881",
+            "disease-term": "abdominal migraine",
+            "food-id": "PlantDer ID: 15",
+            "food-term": "peppermint",
+            "food-type": "Plant",
+            "pmid": "12509588",
+            "sentence": "There seemed to be greater improvement when therapy (famotidine, pizotifen, |peppermint| oil) was targeted to the specific functional gastrointestinal disorder (dyspepsia, |abdominal migraine|, irritable bowel syndrome)."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc6d2a",
+            "association": "Positive",
+            "disease-id": "MESH:D008881",
+            "disease-term": "migraine headaches",
+            "food-id": "Plant ID:39388",
+            "food-term": "Verbascum thapsus L.",
+            "food-type": "Plant",
+            "pmid": "21834240",
+            "sentence": "|Verbascum thapsus L.| is a medicinal plant and has been used to treat numerous pulmonary diseases, asthma, inflammatory disease, spasmodic coughs and |migraine headaches|."
+        },
+        {
+            "_id": "67842af8c3da1c6492bc6e99",
+            "association": "Positive",
+            "disease-id": "MESH:D008881",
+            "disease-term": "migraine",
+            "food-id": "Plant ID:127999",
+            "food-term": "Tanacetum parthenium",
+            "food-type": "Plant",
+            "pmid": "16033387",
+            "sentence": "|Tanacetum parthenium| (TP) is a member of the Asteracee family long used empirically as a herbal remedy for |migraine|."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc7272",
+            "association": "Negative",
+            "disease-id": "MESH:D008881",
+            "disease-term": "migraine",
+            "food-id": "Plant ID:13443",
+            "food-term": "coffee",
+            "food-type": "Plant",
+            "pmid": "12780761",
+            "sentence": "Excessive caffeine consumption, mostly in the form of |coffee| and tea, is a well-recognized cause of headache or |migraine|, and withdrawal can cause headache."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc7c9c",
+            "association": "Negative",
+            "disease-id": "MESH:D008881",
+            "disease-term": "migraine",
+            "food-id": "MeatEgg ID:9823",
+            "food-term": "pork",
+            "food-type": "MeatEgg",
+            "pmid": "8681169",
+            "sentence": "A certain number such as citrus fruits, tea, coffee, |pork|, chocolate, milk, nuts, vegetables and cola drinks have been cited as possible allergens associated with |migraine|."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc7def",
+            "association": "Negative",
+            "disease-id": "MESH:D008881",
+            "disease-term": "migraine",
+            "food-id": "Dairy ID:1",
+            "food-term": "cheese",
+            "food-type": "Dairy",
+            "pmid": "12657413",
+            "sentence": "The list of foods, beverages, and additives that trigger |migraine| includes |cheese|, chocolate, citrus fruits, hot dogs, monosodium glutamate, aspartame, fatty foods, ice cream, caffeine withdrawal, and alcoholic drinks, especially red wine and beer."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc7f82",
+            "association": "Negative",
+            "disease-id": "MESH:D008881",
+            "disease-term": "migraine",
+            "food-id": "Dairy ID:1",
+            "food-term": "cheese",
+            "food-type": "Dairy",
+            "pmid": "8681169",
+            "sentence": "Such foods as chocolate, |cheese|, citrus fruits, bananas, nuts, 'cured' meats, dairy products, cereals, beans, hot dogs, pizza, food additives (sodium nitrate, monosodium glutamate in Chinese restaurant food, aspartame as a sweetener), coffee, tea, cola drinks, alcoholic drinks such as red wine, beer or whisky distilled in copper stills, all may bring on a |migraine| attack."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc7f9e",
+            "association": "Negative",
+            "disease-id": "MESH:D008881",
+            "disease-term": "migraine",
+            "food-id": "Dairy ID:1",
+            "food-term": "cheese",
+            "food-type": "Dairy",
+            "pmid": "7635722",
+            "sentence": "Four hundred twenty-nine patients had |migraine|, of which 16.5% reported that headaches could be precipitated by |cheese| or chocolate, and nearly always both."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc81b9",
+            "association": "Negative",
+            "disease-id": "MESH:D008881",
+            "disease-term": "migraine",
+            "food-id": "AlcoholicBev ID:38",
+            "food-term": "white wine",
+            "food-type": "AlcoholicBev",
+            "pmid": "10370878",
+            "sentence": "Moreover, it emerged that alcoholic beverage intake during stress periods was related to a significantly higher frequency of |migraine| attacks (p > 0.0001 for spirits and sparkling wines, p > 0.009 for red wine and p > 0.006 and p > 0.004 for |white wine| and beer, respectively)."
+        },
+        {
+            "_id": "67842af9c3da1c6492bc81cf",
+            "association": "Negative",
+            "disease-id": "MESH:D008881",
+            "disease-term": "migraine",
+            "food-id": "AlcoholicBev ID:38",
+            "food-term": "white wine",
+            "food-type": "AlcoholicBev",
+            "pmid": "18231712",
+            "sentence": "Red wine was reported to be the principal trigger of |migraine|, but other studies show that |white wine| or other drinks are more involved."
+        }
+    ],
+    "pagination": {
+        "page": 1,
+        "limit": 10,
+        "totalPages": 14,
+        "totalDiseases": 1,
+        "totalFoodDiseases": 132,
+        "totalPagesFoodDiseases": 14
+    }
+}

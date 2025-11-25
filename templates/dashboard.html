@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - DNA2Diet{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="bi bi-speedometer2"></i> Dashboard
+                <small class="text-muted">Welcome, {{ session.user_name }}!</small>
+            </h2>
+        </div>
+    </div>
+
+    <!-- Profile Completion Alert -->
+    {% if not profile %}
+    <div class="alert alert-info">
+        <i class="bi bi-info-circle"></i> 
+        <strong>Complete your profile!</strong> Add your demographic and health information to get more personalized recommendations.
+        <a href="{{ url_for('profile') }}" class="alert-link">Go to Profile</a>
+    </div>
+    {% endif %}
+
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="bi bi-cloud-upload" style="font-size: 3rem; color: var(--primary-color);"></i>
+                    <h5 class="mt-3">Upload Genome</h5>
+                    <p class="text-muted">Upload your genome file to start analysis</p>
+                    <a href="{{ url_for('upload') }}" class="btn btn-primary">
+                        <i class="bi bi-upload"></i> Upload Now
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="bi bi-person-circle" style="font-size: 3rem; color: var(--secondary-color);"></i>
+                    <h5 class="mt-3">Manage Profile</h5>
+                    <p class="text-muted">Update your demographic and health data</p>
+                    <a href="{{ url_for('profile') }}" class="btn btn-primary">
+                        <i class="bi bi-gear"></i> Update Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="bi bi-graph-up" style="font-size: 3rem; color: var(--success-color);"></i>
+                    <h5 class="mt-3">View History</h5>
+                    <p class="text-muted">See your previous analyses</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis History -->
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="bi bi-clock-history"></i> Recent Analyses</h5>
+        </div>
+        <div class="card-body">
+            {% if analyses %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Genome File</th>
+                            <th>Status</th>
+                            <th>Progress</th>
+                            <th>Upload Date</th>
+                            <th>Completed</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for analysis in analyses %}
+                        <tr id="status-{{ analysis.id }}" data-status="{{ analysis.status }}" data-analysis-id="{{ analysis.id }}">
+                            <td>
+                                <i class="bi bi-file-earmark-text"></i> {{ analysis.genome_filename }}
+                            </td>
+                            <td>
+                                {% if analysis.status == 'completed' %}
+                                    <span class="badge bg-success status-badge">
+                                        <i class="bi bi-check-circle"></i> Completed
+                                    </span>
+                                {% elif analysis.status == 'processing' %}
+                                    <span class="badge bg-warning status-badge">
+                                        <i class="bi bi-hourglass-split"></i> Processing
+                                    </span>
+                                {% elif analysis.status == 'failed' %}
+                                    <span class="badge bg-danger status-badge">
+                                        <i class="bi bi-x-circle"></i> Failed
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if analysis.status == 'processing' and analysis.get('progress_step') %}
+                                    <small>
+                                        <div class="text-muted" id="step-{{ analysis.id }}">{{ analysis.progress_step or 'Processing...' }}</div>
+                                        <div class="progress mt-1" style="height: 15px;">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                                 role="progressbar" 
+                                                 style="width: {{ analysis.progress_percent or 0 }}%"
+                                                 id="table-progress-{{ analysis.id }}">
+                                                {{ analysis.progress_percent or 0 }}%
+                                            </div>
+                                        </div>
+                                    </small>
+                                {% else %}
+                                    <span class="text-muted">-</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ analysis.created_at.strftime('%Y-%m-%d %H:%M') if analysis.created_at else 'N/A' }}</td>
+                            <td>
+                                {% if analysis.completed_at %}
+                                    {{ analysis.completed_at.strftime('%Y-%m-%d %H:%M') }}
+                                {% else %}
+                                    <span class="text-muted">-</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if analysis.status == 'completed' %}
+                                    <a href="{{ url_for('results', analysis_id=analysis.id) }}" class="btn btn-sm btn-success">
+                                        <i class="bi bi-eye"></i> View Results
+                                    </a>
+                                {% elif analysis.status == 'processing' %}
+                                    <div>
+                                        <button class="btn btn-sm btn-warning" onclick="checkStatus({{ analysis.id }}, true)">
+                                            <i class="bi bi-arrow-clockwise"></i> Check Status
+                                        </button>
+                                        <div id="progress-info-{{ analysis.id }}" class="mt-2" style="display: none;">
+                                            <small class="text-muted" id="progress-text-{{ analysis.id }}"></small>
+                                            <div class="progress" style="height: 20px;">
+                                                <div id="progress-bar-{{ analysis.id }}" class="progress-bar progress-bar-striped progress-bar-animated" 
+                                                     role="progressbar" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% elif analysis.status == 'failed' %}
+                                    <button class="btn btn-sm btn-danger" onclick="showError({{ analysis.id }}, '{{ analysis.error_message|replace("'", "\\'")|truncate(100) }}')">
+                                        <i class="bi bi-exclamation-triangle"></i> View Error
+                                    </button>
+                                {% endif %}
+                                <form method="POST" action="{{ url_for('delete_analysis', analysis_id=analysis.id) }}" class="d-inline" onsubmit="return confirm('Delete this analysis? This cannot be undone.');">
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-5">
+                <i class="bi bi-file-earmark-text" style="font-size: 4rem; color: #ccc;"></i>
+                <p class="mt-3 text-muted">No analyses yet. Upload your first genome file to get started!</p>
+                <a href="{{ url_for('upload') }}" class="btn btn-primary mt-2">
+                    <i class="bi bi-cloud-upload"></i> Upload Genome File
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Store intervals to prevent multiple ones
+const statusIntervals = {};
+const statusCheckInProgress = {};
+
+function checkStatus(analysisId, showProgress = false) {
+    // Prevent multiple simultaneous checks
+    if (statusCheckInProgress[analysisId]) {
+        return;
+    }
+    
+    const progressInfo = document.getElementById(`progress-info-${analysisId}`);
+    const progressBar = document.getElementById(`progress-bar-${analysisId}`);
+    const progressText = document.getElementById(`progress-text-${analysisId}`);
+    const tableProgress = document.getElementById(`table-progress-${analysisId}`);
+    const stepText = document.getElementById(`step-${analysisId}`);
+    
+    if (showProgress && progressInfo) {
+        progressInfo.style.display = 'block';
+    }
+    
+    statusCheckInProgress[analysisId] = true;
+    
+    fetch(`/api/analysis_status/${analysisId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'completed') {
+                statusCheckInProgress[analysisId] = false;
+                // Stop checking
+                if (statusIntervals[analysisId]) {
+                    clearInterval(statusIntervals[analysisId]);
+                    delete statusIntervals[analysisId];
+                }
+                // Reload page to show results
+                setTimeout(() => location.reload(), 1000);
+            } else if (data.status === 'failed') {
+                statusCheckInProgress[analysisId] = false;
+                // Stop checking
+                if (statusIntervals[analysisId]) {
+                    clearInterval(statusIntervals[analysisId]);
+                    delete statusIntervals[analysisId];
+                }
+                // Reload page to show error
+                setTimeout(() => location.reload(), 1000);
+            } else {
+                statusCheckInProgress[analysisId] = false;
+                // Update progress display
+                if (progressBar && data.progress_percent !== undefined) {
+                    progressBar.style.width = (data.progress_percent || 0) + '%';
+                    progressBar.setAttribute('aria-valuenow', data.progress_percent || 0);
+                    progressBar.textContent = (data.progress_percent || 0) + '%';
+                }
+                if (progressText && data.progress_step) {
+                    progressText.textContent = `Status: ${data.progress_step || 'Processing...'} (${data.progress_percent || 0}%)`;
+                }
+                // Update table progress
+                if (tableProgress) {
+                    tableProgress.style.width = (data.progress_percent || 0) + '%';
+                    tableProgress.textContent = (data.progress_percent || 0) + '%';
+                }
+                if (stepText && data.progress_step) {
+                    stepText.textContent = data.progress_step || 'Processing...';
+                }
+            }
+        })
+        .catch(error => {
+            statusCheckInProgress[analysisId] = false;
+            console.error('Error fetching status:', error);
+        });
+}
+
+function showError(analysisId, errorMessage) {
+    alert('❌ Analysis Failed\n\n' + errorMessage + '\n\nPlease check the error details or contact support.');
+}
+
+// Auto-refresh processing analyses - only once per page load, every 10 seconds
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        const processingRows = document.querySelectorAll('tr[data-status="processing"]');
+        processingRows.forEach(row => {
+            const analysisId = row.dataset.analysisId;
+            if (!analysisId || statusIntervals[analysisId]) {
+                return;
+            }
+            // Initial check
+            checkStatus(analysisId, true);
+            // Then check every 10 seconds
+            statusIntervals[analysisId] = setInterval(() => {
+                checkStatus(analysisId, true);
+            }, 10000);
+        });
+    }, 500);
+});
+</script>
+{% endblock %}
+
