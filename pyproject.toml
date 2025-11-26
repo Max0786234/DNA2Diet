@@ -1,0 +1,22 @@
+[project]
+name = "dna2diet"
+version = "1.0.0"
+requires-python = ">=3.10,<3.11"
+
+dependencies = [
+    "Flask==3.0.0",
+    "Flask-MySQLdb==1.0.1",
+    "Werkzeug==3.0.1",
+    "pandas==2.1.3",
+    "numpy==1.26.2",
+    "thefuzz[speedup]==0.19.0",
+    "python-Levenshtein==0.23.0",
+    "scispacy==0.5.3",
+    "spacy==3.7.2",
+    "requests==2.31.0",
+    "aiohttp==3.9.1",
+    "tqdm==4.66.1",
+    "PyMySQL==1.1.0",
+    "cryptography==41.0.7"
+]
+
