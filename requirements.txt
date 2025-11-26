@@ -1,33 +1,19 @@
-# Web Framework
 Flask==3.0.0
-Flask-MySQLdb==1.0.1
+gunicorn==21.2.0
 Werkzeug==3.0.1
 
-# Data Processing
 pandas==2.1.3
 numpy==1.26.2
 
-# String Matching & NLP
+PyMySQL==1.1.0
+cryptography==41.0.7
+
 thefuzz[speedup]==0.19.0
 python-Levenshtein==0.23.0
 
-# NLP & Text Processing
-spacy==3.7.2
-scispacy==0.5.3
-# Note: en_core_sci_sm model must be installed separately:
-# pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.3/en_core_sci_sm-0.5.3.tar.gz
-
-# HTTP Requests
 requests==2.31.0
 aiohttp==3.9.1
 
-# Utilities
 tqdm==4.66.1
-pathlib2==2.3.7; python_version < '3.4'
 
-# MySQL Database
-mysqlclient==2.2.0
-PyMySQL==1.1.0
-
-# Security
-cryptography==41.0.7
+spacy==3.7.2

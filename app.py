@@ -3,6 +3,10 @@ DNA2Diet Web Application
 Main Flask application file
 """
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify, send_file
 from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
