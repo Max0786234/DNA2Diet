@@ -27,28 +27,7 @@ def check_mysql():
     except ImportError:
         print("⚠️  PyMySQL not installed. Install with: pip install PyMySQL")
         return False
-
-def check_dependencies():
-    """Check if required files exist"""
-    print("\n📋 Checking required files...")
     
-    gwas_file = Path("gwas.tsv")
-    if gwas_file.exists():
-        print(f"✅ GWAS file found: {gwas_file}")
-    else:
-        print(f"❌ GWAS file not found: {gwas_file}")
-        print("   Please ensure gwas.tsv is in the root directory")
-        return False
-    
-    prevalences_file = Path("prevalences.json")
-    if prevalences_file.exists():
-        print(f"✅ Prevalences file found: {prevalences_file}")
-    else:
-        print(f"⚠️  Prevalences file not found: {prevalences_file}")
-        print("   (Optional - will work without it)")
-    
-    return True
-
 def create_directories():
     """Create necessary directories"""
     print("\n📁 Creating directories...")
@@ -96,10 +75,7 @@ def main():
     if not check_python_version():
         sys.exit(1)
     
-    # Check dependencies
-    if not check_dependencies():
-        print("\n⚠️  Some required files are missing. Please ensure all files are present.")
-        sys.exit(1)
+
     
     # Create directories
     create_directories()
